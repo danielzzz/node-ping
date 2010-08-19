@@ -25,10 +25,10 @@ pcap_session = pcap.createSession(process.argv[2] || 'eth0', "");
 // listen for packets, decode them, and feed the simple printer
 pcap_session.addListener('packet', function (raw_packet) {
     var packet = pcap.decode.packet(raw_packet);
-    //if (packet.link.ip && packet.link.ip.protocol_name=="ICMP") {
+    if (packet.link.ip && packet.link.ip.protocol_name=="ICMP") {
         //sys.puts(sys.inspect(packet, 4));
         packet.link && packet.link.ip && sys.puts(packet.link.ip.saddr + " is alive");
         sys.puts(pcap.print.packet(packet));
-    //}
+    }
 });
 
