@@ -1,5 +1,7 @@
 #!/opt/nodejs/v0.1.103/bin/node
 
+// usage sudo ping.js [interface] [host]
+
 
 var sys = require("sys"),
     pcap = require("pcap"), pcap_session;
