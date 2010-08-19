@@ -4,11 +4,7 @@
 var sys = require("sys"),
     pcap = require("pcap"), pcap_session;
     
-//var addr = "google.es";
-//var addr = "213.251.187.191"; //pluto
-//var addr = "10.100.0.1";
-
-var addr = process.argv[3];
+var addr = process.argv[3] || 'localhost';
 
 setInterval(function() {probe(addr)}, 1000);
 
@@ -23,7 +19,7 @@ function probe(addr) {
 }
 
 // create a pcap session
-pcap_session = pcap.createSession(process.argv[2] || 'eth1', "");
+pcap_session = pcap.createSession(process.argv[2] || 'eth0', "");
 
 
 // listen for packets, decode them, and feed the simple printer
