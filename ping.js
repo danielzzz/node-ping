@@ -1,7 +1,16 @@
-#!/opt/nodejs/v0.1.103/bin/node
+#!/opt/nodejs/v0.1.103/bin/node //configure according to your settings
 
-// usage sudo ping.js [interface] [host]
-
+/** 
+* LICENSE MIT
+* (C) Daniel Zelisko
+* http://github.com/danielzzz/node-ping
+*
+* A poor man's ping for node.js
+* It uses UDP_scanning (as node is not able to generate iCPM packets)
+* http://en.wikipedia.org/wiki/Port_scanner#UDP_scanning
+* you need at pcap version 0.1.9 or higher
+* usage sudo ping.js [interface] [host]
+*/
 
 var sys = require("sys"),
     pcap = require("pcap"), pcap_session;
@@ -27,10 +36,8 @@ pcap_session = pcap.createSession(process.argv[2] || 'eth0', "");
 // listen for packets, decode them, and feed the simple printer
 pcap_session.addListener('packet', function (raw_packet) {
     var packet = pcap.decode.packet(raw_packet);
-    if (packet.link.ip && packet.link.ip.protocol_name=="ICMP") {
-        //sys.puts(sys.inspect(packet, 4));
+    if (packet.link && packet.link.ip && packet.link.ip.saddr==addr) {
         packet.link && packet.link.ip && sys.puts(packet.link.ip.saddr + " is alive");
-        sys.puts(pcap.print.packet(packet));
     }
 });
 
