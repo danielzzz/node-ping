@@ -8,6 +8,7 @@
 * A poor man's ping for node.js
 * It uses UDP_scanning (as node is not able to generate iCPM packets)
 * http://en.wikipedia.org/wiki/Port_scanner#UDP_scanning
+* it may not work correct for hosts that silently drop UDP traffic on their firewall
 * you need at pcap version 0.1.9 or higher
 * usage sudo ping.js [interface] [host]
 */
