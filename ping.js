@@ -1,5 +1,3 @@
-#!/opt/nodejs/v0.1.103/bin/node //configure according to your settings
-
 /** 
 * LICENSE MIT
 * (C) Daniel Zelisko
@@ -10,14 +8,13 @@
 * http://en.wikipedia.org/wiki/Port_scanner#UDP_scanning
 * it may not work correct for hosts that silently drop UDP traffic on their firewall
 * you need at pcap version 0.1.9 or higher
-* usage sudo ping.js [interface] [host]
+* 
 */
 
 var sys = require("sys"),
-    pcap = require("pcap"), pcap_session;
+pcap = require('pcap');
     
 var addr = process.argv[3] || 'localhost';
-
 setInterval(function() {probe(addr)}, 1000);
 
 
@@ -41,4 +38,7 @@ pcap_session.addListener('packet', function (raw_packet) {
         packet.link && packet.link.ip && sys.puts(packet.link.ip.saddr + " is alive");
     }
 });
+
+//-------- example ------------------------
+
 

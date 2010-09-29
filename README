@@ -6,10 +6,12 @@ LICENSE MIT
 http://github.com/danielzzz/node-ping
 
 DESCRIPTION
-It uses UDP_scanning http://en.wikipedia.org/wiki/Port_scanner#UDP_scanning (as node is not able to generate iCPM packets)
+node-ping uses UDP_scanning http://en.wikipedia.org/wiki/Port_scanner#UDP_scanning (as node is not able to generate iCPM packets)
 it may not work correct for hosts that silently drop UDP traffic on their firewall
 you need at pcap version 0.1.9 or higher
 
+on the other hand, ping-sys is a simple wrapper for the system ping utility
+
 USAGE
-sudo ping.js [interface] [host]
+sudo node ping.js [interface] [host]
 
