@@ -1,17 +1,21 @@
 NODE-PING
-A poor man's ping for nodejs
+a ping wrapper for nodejs
 
 LICENSE MIT
 (C) Daniel Zelisko
 http://github.com/danielzzz/node-ping
 
 DESCRIPTION
-node-ping uses UDP_scanning http://en.wikipedia.org/wiki/Port_scanner#UDP_scanning (as node is not able to generate iCPM packets)
-it may not work correct for hosts that silently drop UDP traffic on their firewall
-you need at pcap version 0.1.9 or higher
-
-on the other hand, ping-sys is a simple wrapper for the system ping utility
+node-ping is a simple wrapper for the system ping utility
 
 USAGE
-sudo node ping.js [interface] [host]
+var ping = require('ping');
+
+var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
+hosts.forEach(function(host){
+    ping.sys.probe(host, function(isAlive){
+        var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
+        console.log(msg);
+    });
+});
 
