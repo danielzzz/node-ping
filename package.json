@@ -1,0 +1,17 @@
+{
+  "author": "danielzzz <daniel@zelisko.net> (http://daniel.zelisko.net)",
+  "name": "ping",
+  "description": "a simple wrapper for ping",
+  "version": "0.1.0",
+  "homepage": "http://github.com/danielzzz/node-ping",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/danielzzz/node-ping.git"
+  },
+  "engines": {
+    "node": "~0.6.2"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "main":"index.js"
+}
