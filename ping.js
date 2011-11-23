@@ -11,7 +11,7 @@
 * 
 */
 
-var sys = require("sys"),
+var sys = require("util"),
 pcap = require('pcap');
     
 var addr = process.argv[3] || 'localhost';

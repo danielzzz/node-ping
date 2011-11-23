@@ -3,11 +3,11 @@
 * (C) Daniel Zelisko
 * http://github.com/danielzzz/node-ping
 *
-* wrapper for ping
+* a simple wrapper for ping
 * 
 */
 
-var sys   = require('sys'),
+var sys   = require('util'),
     spawn = require('child_process').spawn;
 
 
@@ -23,19 +23,14 @@ function probe(addr, cb) {
 
         ls.on('exit', function (code) {
             var result = (code === 0 ? true : false);
-            cb(result);
+            cb && cb(result);
         });
 }
 
 exports.probe = probe;
 
 
-//-------- example -----------------------
-var host = '192.168.1.1';
-probe(host, function(isAlive){
-    var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
-    console.log(msg);
-});
+
 
 
 
