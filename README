@@ -8,6 +8,9 @@ http://github.com/danielzzz/node-ping
 DESCRIPTION
 node-ping is a simple wrapper for the system ping utility
 
+INSTALLATION
+npm install ping
+
 USAGE
 var ping = require('ping');
 
