@@ -12,6 +12,7 @@ INSTALLATION
 npm install ping
 
 USAGE
+//Tradition calls
 var ping = require('ping');
 
 var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
@@ -22,3 +23,26 @@ hosts.forEach(function(host){
     });
 });
 
+//Promise wrapper
+
+var ping = require("../index");
+
+var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
+
+hosts.forEach(function (host) {
+    ping.sys.promise_probe(host)
+        .then(function (res) {
+            console.log(res);
+        });
+});
+
+//Promise Wrapper with configable ping options
+//Only promise wrapper supports configable ping options
+hosts.forEach(function (host) {
+    ping.sys.promise_probe(host, {
+        timeout: 10,
+        extra: ["-i 2"]
+    }).then(function (res) {
+            console.log(res);
+        });
+});
