@@ -31,7 +31,7 @@ npm install ping
 
 ##Promise wrapper
 
-    var ping = require("../index");
+    var ping = require('ping');
 
     var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
 
