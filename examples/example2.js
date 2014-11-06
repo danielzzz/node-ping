@@ -13,7 +13,7 @@ hosts.forEach(function (host) {
 hosts.forEach(function (host) {
     ping.promise.probe(host, {
         timeout: 10,
-        extra: ["-i 2"]
+        extra: ["-i", "2"]
     })
     .then(function (res) {
             console.log(res);
