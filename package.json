@@ -2,7 +2,7 @@
   "author": "danielzzz <daniel@zelisko.net> (http://daniel.zelisko.net)",
   "name": "ping",
   "description": "a simple wrapper for ping",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "http://github.com/danielzzz/node-ping",
   "repository": {
     "type": "git",
