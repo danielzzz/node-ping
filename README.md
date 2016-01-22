@@ -54,3 +54,15 @@ npm install ping
             });
     });
 
+### Support configuration
+
+```
+/**
+ * Cross platform config representation
+ * @typedef {Object} PingConfig
+ * @property {boolean} numeric - Map IP address to hostname or not
+ * @property {number} timeout - Time duration for ping command to exit
+ * @property {number} min_reply - Exit after sending number of ECHO_REQUEST
+ * @property {string[]} extra - Optional options does not provided
+ */
+```
