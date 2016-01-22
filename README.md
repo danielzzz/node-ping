@@ -48,7 +48,6 @@ Below are examples extracted from `examples`
 
 ##Promise Wrapper with configable ping options
 
-    //Only promise wrapper supports configable ping options
     hosts.forEach(function (host) {
         // WARNING: -i 2 argument may not work in other platform like window
         ping.promise.probe(host, {
