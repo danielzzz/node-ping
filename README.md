@@ -1,7 +1,7 @@
 #NODE-PING
 a ping wrapper for nodejs
 
-@last-modified: 2016-01-23 00:36
+@last-modified: 2016-04-21 00:00
 
 #LICENSE MIT
 
@@ -23,28 +23,49 @@ Below are examples extracted from `examples`
 
 ##Tradition calls
 
-    var ping = require('ping');
+```js
+var ping = require('ping');
 
-    var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
-    hosts.forEach(function(host){
-        ping.sys.probe(host, function(isAlive){
-            var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
-            console.log(msg);
-        });
+var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
+hosts.forEach(function(host){
+    ping.sys.probe(host, function(isAlive){
+        var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
+        console.log(msg);
     });
+});
+```
+
+##Tradition calls with configuration
+
+```js
+var cfg = {
+    timeout: 10,
+    // WARNING: -i 2 may not work in other platform like window
+    extra: ["-i 2"],
+};
+
+hosts.forEach(function(host){
+    ping.sys.probe(host, function(isAlive){
+        var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
+        console.log(msg);
+    }, cfg);
+});
+```
 
 ##Promise wrapper
 
-    var ping = require('ping');
+```js
+var ping = require('ping');
 
-    var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
+var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
 
-    hosts.forEach(function (host) {
-        ping.promise.probe(host)
-            .then(function (res) {
-                console.log(res);
-            });
-    });
+hosts.forEach(function (host) {
+    ping.promise.probe(host)
+        .then(function (res) {
+            console.log(res);
+        });
+});
+```
 
 ##Promise Wrapper with configable ping options
 
