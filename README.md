@@ -1,7 +1,7 @@
 #NODE-PING
 a ping wrapper for nodejs
 
-@last-modified: 2016-04-21 00:00
+@last-modified: 2016-04-24 00:00
 
 #LICENSE MIT
 
@@ -92,6 +92,38 @@ Below is the possible configuration
  * @property {number} min_reply - Exit after sending number of ECHO_REQUEST
  * @property {string[]} extra - Optional options does not provided
  */
+```
+
+### Output specification
+
+* For callback based implementaiton:
+
+```js
+/**
+ * Callback after probing given host
+ * @callback probeCallback
+ * @param {boolean} isAlive - Whether target is alive or not
+ * @param {Object} error - Null if no error occurs
+ */
+```
+
+* For promise based implementation
+
+```js
+/**
+ * Resolved response
+ * @param {string} host - The input IP address or HOST
+ * @param {boolean} alive - True for existed host
+ * @param {string} output - Raw stdout from system ping
+ * @param {number} time - Time (float) in ms for first successful ping response
+ */
+
+{
+    host: addr,
+    alive: result,
+    output: outstring,
+    time: time,
+}
 ```
 
 #### Note
