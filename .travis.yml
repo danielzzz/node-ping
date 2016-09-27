@@ -1,0 +1,18 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+node_js:
+  - '6'
+  - '5'
+  - '4'
+  - iojs-v3
+  - iojs-v2
+  - iojs-v1
+  - '0.12'
+  - '0.11'
+  - '0.10'
+  - '0.8'
+before_script:
+  # This makes ping work in tests.
+  - /bin/ping -n -w 1 -c 1 127.0.0.1

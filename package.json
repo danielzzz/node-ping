@@ -1,5 +1,8 @@
 {
   "author": "danielzzz <daniel@zelisko.net> (http://daniel.zelisko.net)",
+  "scripts": {
+    "test": "mocha"
+  },
   "contributors": [
       "Mond Wan <mondwan.1015@gmail.com>",
       "dougluce <doug@tenousiperochhelical.con.com>",
@@ -24,11 +27,15 @@
     "url": "git://github.com/danielzzz/node-ping.git"
   },
   "engines": {
-    "node": ">=0.6.2"
+    "node": ">=0.8"
   },
   "dependencies": {
     "q": "1.x"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "2.3.0",
+    "mocha": "2.5.3",
+    "sinon": "1.17.6"
+  },
   "main": "index.js"
 }
