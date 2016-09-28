@@ -28,8 +28,7 @@
     "node": ">=0.6.2"
   },
   "dependencies": {
-    "q": "1.x",
-    "stdev": "0.0.1"
+    "q": "1.x"
   },
   "devDependencies": {},
   "main": "index.js"
