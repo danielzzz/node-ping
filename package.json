@@ -13,12 +13,14 @@
       "Krispin Schulz <krispinone@googlemail.com> (http://kr1sp1n.io)",
       "Kathy Hill",
       "mrMuppet",
-      "Adam Heath <adam@adamheath.me> (http://www.adamheath.me)"
+      "Adam Heath <adam@adamheath.me> (http://www.adamheath.me)",
+      "BlessJah <blessjah@jacekowski.org>"
   ],
   "name": "ping",
   "description": "a simple wrapper for ping",
   "version": "0.2.0",
   "homepage": "http://github.com/danielzzz/node-ping",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/danielzzz/node-ping.git"
