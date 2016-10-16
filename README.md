@@ -69,21 +69,23 @@ hosts.forEach(function (host) {
 
 ##Promise Wrapper with configable ping options
 
-    hosts.forEach(function (host) {
-        // WARNING: -i 2 argument may not work in other platform like window
-        ping.promise.probe(host, {
-            timeout: 10,
-            extra: ["-i 2"],
-        }).then(function (res) {
-            console.log(res);
-        });
+```js
+hosts.forEach(function (host) {
+    // WARNING: -i 2 argument may not work in other platform like window
+    ping.promise.probe(host, {
+        timeout: 10,
+        extra: ["-i 2"],
+    }).then(function (res) {
+        console.log(res);
     });
+});
+```
 
 ### Support configuration
 
 Below is the possible configuration
 
-```
+```js
 /**
  * Cross platform config representation
  * @typedef {Object} PingConfig
@@ -116,13 +118,21 @@ Below is the possible configuration
  * @param {boolean} alive - True for existed host
  * @param {string} output - Raw stdout from system ping
  * @param {number} time - Time (float) in ms for first successful ping response
+ * @param {number} min - Minimum time for collection records
+ * @param {number} max - Maximum time for collection records
+ * @param {number} avg - Average time for collection records
+ * @param {number} stddev - Standard deviation time for collected records
  */
 
 {
     host: addr,
-    alive: result,
+    alive: isAlive,
     output: outstring,
     time: time,
+    min: min,
+    max: max,
+    avg: avg,
+    stddev: stddev,
 }
 ```
 
