@@ -1,0 +1,10 @@
+Pinging www.some-domain.com [127.0.0.1] with 32 bytes of
+Reply from 127.0.0.1: bytes=32 time=564ms TTL=237
+Reply from 127.0.0.1: bytes=32 time=555ms TTL=237
+Reply from 127.0.0.1: bytes=32 time=554ms TTL=237
+Reply from 127.0.0.1: bytes=32 time=548ms TTL=237
+
+Ping statistics for 127.0.0.1:
+   Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)
+   Approximate round trip times in milli-seconds:
+      Minimum = 548ms, Maximum = 564ms, Average = 555ms

@@ -4,186 +4,184 @@
 
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var cp = require('child_process');
 var os = require('os');
-var events = require('events');
+var cp = require('child_process');
+var q = require('q');
+var fs = require('fs');
+var path = require('path');
 var util = require('util');
+var events = require('events');
 
+var loadFixturePath = require('./load-fixture-path');
 var ping = require('..');
 
-var windowOutput = [
-    'Pinging www.some-domain.com [127.0.0.1] with 32 bytes of',
-    '',
-    'Reply from 127.0.0.1: bytes=32 time=564ms TTL=237',
-    'Reply from 127.0.0.1: bytes=32 time=555ms TTL=237',
-    'Reply from 127.0.0.1: bytes=32 time=554ms TTL=237',
-    'Reply from 127.0.0.1: bytes=32 time=548ms TTL=237',
-    'Ping statistics for 127.0.0.1:',
-    'Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)',
-    'Approximate round trip times in milli-seconds:',
-    'Minimum = 548ms, Maximum = 564ms, Average = 555ms',
-].join('\n');
+// Some constants
+var ANSWER = require('./fixture/answer');
+var PLATFORMS = [
+    'window',
+    'darwin',
+    'freebsd',
+    // 'aix',
+    // 'linux',
+];
+var PLATFORM_TO_EXTRA_ARGUMENTS = {
+    window: ['-n', '2'],
+    darwin: ['-c', '2'],
+    freebsd: ['-c', '2'],
+    // linux: ['-c', '2'],
+};
 
-var emitter = new events.EventEmitter();
-emitter.stdout = emitter;
+var pathToAnswerKey = function (p) {
+    var basename = path.posix.basename(p, '.txt');
+    var dirname = path.posix.basename(path.posix.dirname(p));
+    var osname = path.posix.basename(
+        path.posix.dirname(path.posix.dirname(p))
+    );
 
-function fakePing() {
-    windowOutput.split('\n').forEach(function (line) {
-        emitter.emit('data', line);
-    });
-    emitter.emit('close', 0);
-}
+    return [osname, dirname, basename].join('_');
+};
 
-describe('Ping', function () {
-    var host = '127.0.0.1';
+var mockOutSpawn = function (fp) {
+    return function () {
+        var e = new events.EventEmitter();
+        e.stdout = e;
 
-    describe('runs in callback mode', function () {
-        it(util.format('plain pings %s', host), function (done) {
-            ping.sys.probe(host, function (isAlive) {
-                expect(isAlive).to.be.true;
-                done();
-            });
+        var s = fs.createReadStream(fp);
+        s.on('data', function (line) {
+            e.emit('data', line);
+        });
+        s.on('close', function () {
+            e.emit('close', 0);
         });
 
-        it(
-            util.format(
-                'pings %s with custom config',
-                host
-            ),
-            function (done) {
-                ping.sys.probe(host, function (isAlive) {
-                    expect(isAlive).to.be.true;
-                    done();
-                }, {extra: ['-i 2']});
-            }
-        );
+        return e;
+    };
+};
 
-        it(
-            util.format(
-                'pings %s with some default argument gone',
-                host
-            ),
-            function (done) {
-                ping.sys.probe(host, function (isAlive) {
-                    expect(isAlive).to.be.true;
-                    done();
-                }, {extra: ['-i 2'], timeout: false});
-            }
-        );
-    });
+var createTestCase = function (platform, pingExecution) {
+    var stubs = [];
 
-    describe('runs in promise mode', function () {
-        it(
-            util.format('plain pings %s', host),
-            function () {
-                var promise = ping.promise.probe(host)
-                .then(function (res) {
-                    expect(res.alive).to.be.true;
-                    expect(res.time).to.be.above(0);
-                    expect(res.max).to.be.above(0);
-                    expect(res.min).to.be.above(0);
-                    expect(res.stddev).to.be.equal(0);
-                    expect(res.host).to.equal(host);
-                    expect(res.output).to.not.be.empty;
-                });
-                fakePing();
-                return promise;
-            }
-        );
+    describe(util.format('On %s platform', platform), function () {
+        var fixturePaths = loadFixturePath(platform);
 
-        it(util.format('pings %s with custom config', host), function () {
-            var promise = ping.promise.probe(host, {
-                timeout: 10,
-                extra: ['-i 2'],
-            }).then(function (res) {
-                expect(res.alive).to.be.true;
-                expect(res.time).to.be.above(0);
-                expect(res.host).to.equal(host);
-                expect(res.output).to.not.be.empty;
-            });
-            fakePing();
-            return promise;
-        });
-
-        it(
-            util.format(
-                'pings %s with some default argument gone',
-                host
-            ),
-            function () {
-                var promise = ping.promise.probe(host, {
-                    timeout: false,
-                    extra: ['-i 2'],
-                }).then(function (res) {
-                    expect(res.alive).to.be.true;
-                    expect(res.time).to.be.above(0);
-                    expect(res.host).to.equal(host);
-                    expect(res.output).to.not.be.empty;
-                });
-                fakePing();
-                return promise;
-            }
-        );
-    });
-
-    describe('runs in a simulated Windows environment', function () {
-        // Pretend we're in Windows to test windows-specific features
         before(function () {
-            this.stubs = [
-                sinon.stub(cp, 'spawn', function () { return emitter; }),
-                sinon.stub(os, 'platform', function () { return 'windows'; }),
-            ];
+            stubs.push(
+                sinon.stub(os, 'platform', function () { return platform; })
+            );
         });
 
         after(function () {
-            this.stubs.forEach(function (stub) {
+            stubs.forEach(function (stub) {
                 stub.restore();
             });
         });
 
-        it(util.format('plain pings %s', host), function () {
-            var promise = ping.promise.probe(host).then(function (res) {
-                expect(res.alive).to.be.true;
-                expect(res.time).to.equal(564);
-                expect(res.host).to.equal(host);
-                expect(res.output).to.not.be.empty;
+        describe('runs with default config', function () {
+            fixturePaths.forEach(function (fp) {
+                it(
+                    util.format('Using |%s|', pathToAnswerKey(fp)),
+                    function () {
+                        return pingExecution(fp);
+                    }
+                );
             });
-            fakePing();
-            return promise;
         });
 
-        it(
-            util.format('pings %s with custom config', host),
-            function () {
-                var promise = ping.promise.probe(host, {
-                    timeout: 10,
-                    extra: ['-i 2'],
-                }).then(function (res) {
-                    expect(res.alive).to.be.true;
-                    expect(res.time).to.equal(564);
-                    expect(res.host).to.equal(host);
-                    expect(res.output).to.not.be.empty;
-                });
-                fakePing();
-                return promise;
-            }
+        describe('runs with custom config', function () {
+            fixturePaths.forEach(function (fp) {
+                it(
+                    util.format('Using |%s|', pathToAnswerKey(fp)),
+                    function () {
+                        return pingExecution(fp, {
+                            timeout: 10,
+                            extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
+                        });
+                    }
+                );
+            });
+        });
+
+        describe('runs with custom config with default gone', function () {
+            fixturePaths.forEach(function (fp) {
+                it(
+                    util.format('Using |%s|', pathToAnswerKey(fp)),
+                    function () {
+                        return pingExecution(fp, {
+                            timeout: false,
+                            extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
+                        });
+                    }
+                );
+            });
+        });
+    });
+};
+
+describe('Ping in callback mode', function () {
+    var pingExecution = function (fp, args) {
+        var deferred = q.defer();
+
+        var stub = sinon.stub(
+            cp,
+            'spawn',
+            mockOutSpawn(fp)
         );
 
-        it(
-            util.format('pings %s with some default argument gone', host),
-            function () {
-                var promise = ping.promise.probe(host, {
-                    timeout: false,
-                    extra: ['-i 2'],
-                }).then(function (res) {
-                    expect(res.alive).to.be.true;
-                    expect(res.time).to.equal(564);
-                    expect(res.host).to.equal(host);
-                    expect(res.output).to.not.be.empty;
-                });
-                fakePing();
-                return promise;
+        var cb = function (isAlive, err) {
+            if (err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(isAlive);
             }
+        };
+
+        if (args) {
+            ping.sys.probe('whatever', cb, args);
+        } else {
+            ping.sys.probe('whatever', cb);
+        }
+
+        stub.restore();
+
+        return deferred.promise.then(function (data) {
+            var answerKey = pathToAnswerKey(fp);
+            var actualIsAlive = data;
+            var expectIsAlive = ANSWER[answerKey].alive;
+            expect(actualIsAlive).to.equal(expectIsAlive);
+        });
+    };
+
+    PLATFORMS.forEach(function (platform) {
+        createTestCase(platform, pingExecution);
+    });
+});
+
+describe('Ping in promise mode', function () {
+    var pingExecution = function (fp, args) {
+        var stub = sinon.stub(
+            cp,
+            'spawn',
+            mockOutSpawn(fp)
         );
+
+        var ret = null;
+        if (args) {
+            ret = ping.promise.probe('whatever', args);
+        } else {
+            ret = ping.promise.probe('whatever');
+        }
+
+        stub.restore();
+
+        return ret.then(function (data) {
+            var answerKey = pathToAnswerKey(fp);
+            var actualData = data;
+            var expectData = ANSWER[answerKey];
+            expect(actualData).to.deep.equal(expectData);
+        });
+    };
+
+    PLATFORMS.forEach(function (platform) {
+        createTestCase(platform, pingExecution);
     });
 });
