@@ -140,7 +140,7 @@ them are expected to be cross platform.
 * By setting `numeric`, `timeout` or `min_reply` to false, you can run `ping`
 without corresponding arguments.
 
-#### Contributing
+# Contributing
 
 Before opening a pull request please make sure your changes follow the
 [contribution guidelines][1].
