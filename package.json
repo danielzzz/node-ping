@@ -4,21 +4,21 @@
     "test": "mocha"
   },
   "contributors": [
-      "Mond Wan <mondwan.1015@gmail.com>",
-      "dougluce <doug@tenousiperochhelical.con.com>",
-      "weihua44",
-      "GermanBluefox",
-      "mabukar",
-      "microacup <xiangmain@gmail.com>",
-      "Andrew Fadeev",
-      "Joshua Pruitt <firefly777@gmail.com>",
-      "Stephan van Rooij <stephan@svrooij.nl> (http://svrooij.nl)",
-      "Krispin Schulz <krispinone@googlemail.com> (http://kr1sp1n.io)",
-      "Kathy Hill",
-      "mrMuppet",
-      "Adam Heath <adam@adamheath.me> (http://www.adamheath.me)",
-      "BlessJah <blessjah@jacekowski.org>",
-      "jritsema"
+    "Mond Wan <mondwan.1015@gmail.com>",
+    "dougluce <doug@tenousiperochhelical.con.com>",
+    "weihua44",
+    "GermanBluefox",
+    "mabukar",
+    "microacup <xiangmain@gmail.com>",
+    "Andrew Fadeev",
+    "Joshua Pruitt <firefly777@gmail.com>",
+    "Stephan van Rooij <stephan@svrooij.nl> (http://svrooij.nl)",
+    "Krispin Schulz <krispinone@googlemail.com> (http://kr1sp1n.io)",
+    "Kathy Hill",
+    "mrMuppet",
+    "Adam Heath <adam@adamheath.me> (http://www.adamheath.me)",
+    "BlessJah <blessjah@jacekowski.org>",
+    "jritsema"
   ],
   "name": "ping",
   "description": "a simple wrapper for ping",
@@ -33,7 +33,8 @@
     "node": ">=0.8"
   },
   "dependencies": {
-    "q": "1.x"
+    "q": "1.x",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "chai": "2.3.0",

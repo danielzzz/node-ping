@@ -1,7 +1,7 @@
 #NODE-PING
 a ping wrapper for nodejs
 
-@last-modified: 2016-04-24 00:00
+@last-modified: 2016-10-21 12:43
 
 #LICENSE MIT
 
@@ -113,27 +113,18 @@ Below is the possible configuration
 
 ```js
 /**
- * Resolved response
+ * Parsed response
+ * @typedef {object} PingResponse
  * @param {string} host - The input IP address or HOST
+ * @param {string} numeric_host - Target IP address
  * @param {boolean} alive - True for existed host
  * @param {string} output - Raw stdout from system ping
  * @param {number} time - Time (float) in ms for first successful ping response
- * @param {number} min - Minimum time for collection records
- * @param {number} max - Maximum time for collection records
- * @param {number} avg - Average time for collection records
- * @param {number} stddev - Standard deviation time for collected records
+ * @param {string} min - Minimum time for collection records
+ * @param {string} max - Maximum time for collection records
+ * @param {string} avg - Average time for collection records
+ * @param {string} stddev - Standard deviation time for collected records
  */
-
-{
-    host: addr,
-    alive: isAlive,
-    output: outstring,
-    time: time,
-    min: min,
-    max: max,
-    avg: avg,
-    stddev: stddev,
-}
 ```
 
 #### Note
