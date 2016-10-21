@@ -5,10 +5,10 @@
     "alive": true,
     "output": "PING google.com (172.217.24.46): 56 data bytes\n64 bytes from 172.217.24.46: icmp_seq=0 ttl=54 time=5.371 ms\n64 bytes from 172.217.24.46: icmp_seq=1 ttl=54 time=4.269 ms\n64 bytes from 172.217.24.46: icmp_seq=2 ttl=54 time=4.970 ms\n64 bytes from 172.217.24.46: icmp_seq=3 ttl=54 time=5.228 ms\n\n--- google.com ping statistics ---\n4 packets transmitted, 4 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 4.269/4.960/5.371/0.424 ms\n",
     "time": 5.371,
-    "min": 4.269,
-    "max": 4.96,
-    "avg": 5.371,
-    "stddev": 0.424
+    "min": "4.269",
+    "max": "4.960",
+    "avg": "5.371",
+    "stddev": "0.424"
   },
   "linux_en_sample1": {
     "host": "localhost",
@@ -16,10 +16,10 @@
     "alive": true,
     "output": "PING localhost (127.0.0.1) 56(84) bytes of data.\n64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.022 ms\n64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.027 ms\n64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.029 ms\n64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.030 ms\n\n--- localhost ping statistics ---\n4 packets transmitted, 4 received, 0% packet loss, time 2999ms\nrtt min/avg/max/mdev = 0.022/0.027/0.030/0.003 ms\n",
     "time": 0.022,
-    "min": 0.022,
-    "max": 0.03,
-    "avg": 0.027,
-    "stddev": 0.003
+    "min": "0.022",
+    "max": "0.030",
+    "avg": "0.027",
+    "stddev": "0.003"
   },
   "window_en_sample1": {
     "host": "www.some-domain.com",
@@ -27,10 +27,10 @@
     "alive": true,
     "output": "Pinging www.some-domain.com [127.0.0.1] with 32 bytes of\nReply from 127.0.0.1: bytes=32 time=564ms TTL=237\nReply from 127.0.0.1: bytes=32 time=555ms TTL=237\nReply from 127.0.0.1: bytes=32 time=554ms TTL=237\nReply from 127.0.0.1: bytes=32 time=548ms TTL=237\n\nPing statistics for 127.0.0.1:\n   Packets: Sent = 4, Received = 4, Lost = 0 (0% loss)\n   Approximate round trip times in milli-seconds:\n      Minimum = 548ms, Maximum = 564ms, Average = 555ms\n",
     "time": 564,
-    "min": 548,
-    "max": 564,
-    "avg": 555,
-    "stddev": 5.723
+    "min": "548.000",
+    "max": "564.000",
+    "avg": "555.000",
+    "stddev": "5.723"
   },
   "window_zh_sample1": {
     "host": "google.com",
@@ -38,9 +38,9 @@
     "alive": true,
     "output": "Ping google.com [216.58.203.14] (使用 32 位元組的資料):\n回覆自 216.58.203.14: 位元組=32 時間=2ms TTL=54\n回覆自 216.58.203.14: 位元組=32 時間=2ms TTL=54\n回覆自 216.58.203.14: 位元組=32 時間=3ms TTL=54\n回覆自 216.58.203.14: 位元組=32 時間=3ms TTL=54\n\n216.58.203.14 的 Ping 統計資料:\n    封包: 已傳送 = 4，已收到 = 4, 已遺失 = 0 (0% 遺失)，\n    大約的來回時間 (毫秒):\n        最小值 = 2ms，最大值 = 3ms，平均 = 2ms\n",
     "time": 2,
-    "min": 2,
-    "max": 3,
-    "avg": 2,
-    "stddev": 0.707
+    "min": "2.000",
+    "max": "3.000",
+    "avg": "2.000",
+    "stddev": "0.707"
   }
 }

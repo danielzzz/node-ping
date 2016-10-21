@@ -901,10 +901,6 @@
       }
     ],
     "init-declarations": 0,
-    "jsx-quotes": [
-      2,
-      "prefer-double"
-    ],
     "key-spacing": [
       2,
       {
@@ -1090,172 +1086,6 @@
     "yoda": [
       2,
       "never"
-    ],
-    "react/display-name": [
-      0,
-      {
-        "ignoreTranspilerName": false
-      }
-    ],
-    "react/jsx-no-duplicate-props": [
-      0,
-      {
-        "ignoreCase": false
-      }
-    ],
-    "react/jsx-no-undef": 2,
-    "react/jsx-uses-react": [
-      2,
-      {
-        "pragma": "React"
-      }
-    ],
-    "react/jsx-uses-vars": 2,
-    "react/no-danger": 0,
-    "react/no-deprecated": [
-      1,
-      {
-        "react": "0.14.0"
-      }
-    ],
-    "react/no-did-mount-set-state": [
-      2,
-      "allow-in-func"
-    ],
-    "react/no-did-update-set-state": [
-      2,
-      "allow-in-func"
-    ],
-    "react/no-direct-mutation-state": 0,
-    "react/no-is-mounted": 2,
-    "react/no-unknown-property": 2,
-    "react/prop-types": [
-      2,
-      {
-        "ignore": [],
-        "customValidators": []
-      }
-    ],
-    "react/react-in-jsx-scope": 2,
-    "jsx-a11y/no-access-key": 2,
-    "jsx-a11y/img-uses-alt": 2,
-    "jsx-a11y/redundant-alt": 2,
-    "jsx-a11y/valid-aria-role": 2,
-    "react/forbid-prop-types": [
-      0,
-      {
-        "forbid": [
-          "any",
-          "array",
-          "object"
-        ]
-      }
-    ],
-    "react/jsx-boolean-value": [
-      2,
-      "never"
-    ],
-    "react/jsx-closing-bracket-location": [
-      2,
-      "line-aligned"
-    ],
-    "react/jsx-curly-spacing": [
-      0,
-      "never",
-      {
-        "allowMultiline": true
-      }
-    ],
-    "react/jsx-handler-names": [
-      0,
-      {
-        "eventHandlerPrefix": "handle",
-        "eventHandlerPropPrefix": "on"
-      }
-    ],
-    "react/jsx-indent-props": [
-      2,
-      2
-    ],
-    "react/jsx-key": 0,
-    "react/jsx-max-props-per-line": [
-      0,
-      {
-        "maximum": 1
-      }
-    ],
-    "react/jsx-no-bind": [
-      2,
-      {
-        "ignoreRefs": true,
-        "allowArrowFunctions": true,
-        "allowBind": false
-      }
-    ],
-    "react/jsx-no-literals": 0,
-    "react/jsx-pascal-case": 2,
-    "react/sort-prop-types": [
-      0,
-      {
-        "ignoreCase": false,
-        "callbacksLast": false
-      }
-    ],
-    "react/jsx-sort-props": [
-      0,
-      {
-        "ignoreCase": false,
-        "callbacksLast": false
-      }
-    ],
-    "react/no-multi-comp": [
-      2,
-      {
-        "ignoreStateless": true
-      }
-    ],
-    "react/no-set-state": 0,
-    "react/no-string-refs": 0,
-    "react/prefer-es6-class": [
-      2,
-      "never"
-    ],
-    "react/prefer-stateless-function": 2,
-    "react/require-extension": [
-      0,
-      {
-        "extensions": [
-          ".jsx"
-        ]
-      }
-    ],
-    "react/require-render-return": 2,
-    "react/self-closing-comp": 2,
-    "react/jsx-space-before-closing": [
-      2,
-      "always"
-    ],
-    "react/sort-comp": [
-      2,
-      {
-        "order": [
-          "static-methods",
-          "lifecycle",
-          "/^on.+$/",
-          "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
-          "everything-else",
-          "/^render.+$/",
-          "render"
-        ]
-      }
-    ],
-    "react/wrap-multilines": [
-      2,
-      {
-        "declaration": true,
-        "assignment": true,
-        "return": true
-      }
     ]
   },
   "parserOptions": {
@@ -1275,14 +1105,11 @@
   },
   "extends": [
     "eslint-config-eslint",
-    "plugin:react/recommended",
     "eslint-config-airbnb",
     "/opt/local/lib/node_modules/eslint-config-airbnb/rules/node.js",
     "/opt/local/lib/node_modules/eslint-config-airbnb/rules/style.js",
     "/opt/local/lib/node_modules/eslint-config-airbnb/rules/variables.js"
   ],
   "plugins": [
-    "jsx-a11y",
-    "react"
   ]
 }
