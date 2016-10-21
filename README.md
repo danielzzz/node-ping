@@ -1,4 +1,5 @@
 #NODE-PING
+
 a ping wrapper for nodejs
 
 @last-modified: 2016-10-21 12:43
@@ -138,3 +139,10 @@ them are expected to be cross platform.
 
 * By setting `numeric`, `timeout` or `min_reply` to false, you can run `ping`
 without corresponding arguments.
+
+#### Contributing
+
+Before opening a pull request please make sure your changes follow the
+[contribution guidelines][1].
+
+[1]: https://github.com/danielzzz/node-ping/blob/master/CONTRIBUTING.md
