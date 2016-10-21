@@ -1,7 +1,7 @@
 {
   "author": "danielzzz <daniel@zelisko.net> (http://daniel.zelisko.net)",
   "scripts": {
-    "test": "mocha"
+    "test": "grunt test"
   },
   "contributors": [
     "Mond Wan <mondwan.1015@gmail.com>",
@@ -22,7 +22,7 @@
   ],
   "name": "ping",
   "description": "a simple wrapper for ping",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "http://github.com/danielzzz/node-ping",
   "license": "MIT",
   "repository": {
