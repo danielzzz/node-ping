@@ -1099,16 +1099,13 @@
     "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "parser": "/opt/local/lib/node_modules/babel-eslint/index.js",
+  "parser": "babel-eslint",
   "ecmaFeatures": {
     "jsx": true
   },
   "extends": [
     "eslint-config-eslint",
-    "eslint-config-airbnb",
-    "/opt/local/lib/node_modules/eslint-config-airbnb/rules/node.js",
-    "/opt/local/lib/node_modules/eslint-config-airbnb/rules/style.js",
-    "/opt/local/lib/node_modules/eslint-config-airbnb/rules/variables.js"
+    "eslint-config-airbnb"
   ],
   "plugins": [
   ]
