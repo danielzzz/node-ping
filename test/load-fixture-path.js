@@ -45,7 +45,7 @@ module.exports = function (platform) {
         dirname = 'window';
     }
 
-    var currentDirectory = path.posix.dirname(__filename);
+    var currentDirectory = path.dirname(__filename);
 
     var targetDirectory = [currentDirectory, 'fixture'];
     if (dirname) {
@@ -55,6 +55,7 @@ module.exports = function (platform) {
         '**',
         '*.txt',
     ]);
+	targetDirectory = path.posix.join.apply(path.posix, targetDirectory);
 
-    return glob.sync(targetDirectory.join(path.sep));
+    return glob.sync(targetDirectory);
 };
