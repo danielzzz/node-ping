@@ -17,8 +17,8 @@
     "output": "PING localhost (127.0.0.1) 56(84) bytes of data.\n64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.022 ms\n64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.027 ms\n64 bytes from localhost (127.0.0.1): icmp_seq=3 ttl=64 time=0.029 ms\n64 bytes from localhost (127.0.0.1): icmp_seq=4 ttl=64 time=0.030 ms\n\n--- localhost ping statistics ---\n4 packets transmitted, 4 received, 0% packet loss, time 2999ms\nrtt min/avg/max/mdev = 0.022/0.027/0.030/0.003 ms\n",
     "time": 0.022,
     "min": "0.022",
-    "max": "0.030",
-    "avg": "0.027",
+    "max": "0.027",
+    "avg": "0.030",
     "stddev": "0.003"
   },
   "window_en_sample1": {

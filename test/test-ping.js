@@ -22,13 +22,13 @@ var PLATFORMS = [
     'darwin',
     'freebsd',
     // 'aix',
-    // 'linux',
+    'linux',
 ];
 var PLATFORM_TO_EXTRA_ARGUMENTS = {
     window: ['-n', '2'],
     darwin: ['-c', '2'],
     freebsd: ['-c', '2'],
-    // linux: ['-c', '2'],
+    linux: ['-c', '2'],
 };
 
 var pathToAnswerKey = function (p) {
