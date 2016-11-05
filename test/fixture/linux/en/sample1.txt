@@ -7,4 +7,3 @@ PING localhost (127.0.0.1) 56(84) bytes of data.
 --- localhost ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 2999ms
 rtt min/avg/max/mdev = 0.022/0.027/0.030/0.003 ms
-
