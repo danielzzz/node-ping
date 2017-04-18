@@ -1,28 +1,28 @@
-#NODE-PING
+# NODE-PING
 
 a ping wrapper for nodejs
 
 @last-modified: 2016-10-21 12:43
 
-#LICENSE MIT
+# LICENSE MIT
 
 (C) Daniel Zelisko
 
 http://github.com/danielzzz/node-ping
 
-#DESCRIPTION
+# DESCRIPTION
 
 node-ping is a simple wrapper for the system ping utility
 
-#INSTALLATION
+# INSTALLATION
 
 npm install ping
 
-#USAGE
+# USAGE
 
 Below are examples extracted from `examples`
 
-##Tradition calls
+## Tradition calls
 
 ```js
 var ping = require('ping');
@@ -36,7 +36,7 @@ hosts.forEach(function(host){
 });
 ```
 
-##Tradition calls with configuration
+## Tradition calls with configuration
 
 ```js
 var cfg = {
@@ -53,7 +53,7 @@ hosts.forEach(function(host){
 });
 ```
 
-##Promise wrapper
+## Promise wrapper
 
 ```js
 var ping = require('ping');
@@ -68,7 +68,7 @@ hosts.forEach(function (host) {
 });
 ```
 
-##Promise Wrapper with configable ping options
+## Promise Wrapper with configable ping options
 
 ```js
 hosts.forEach(function (host) {
