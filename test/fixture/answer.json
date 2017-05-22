@@ -32,6 +32,28 @@
     "avg": "555.000",
     "stddev": "5.723"
   },
+  "window_fr_sample1": {
+    "host": "127.0.0.1",
+    "numeric_host": "127.0.0.1",
+    "alive": true,
+    "output": "Envoi d’une requete 'Ping' 127.0.0.1 avec 32 octets de donnees :\nReponse de 127.0.0.1 : octets=32 temps<1ms TTL=128\nReponse de 127.0.0.1 : octets=32 temps<1ms TTL=128\nReponse de 127.0.0.1 : octets=32 temps<1ms TTL=128\nReponse de 127.0.0.1 : octets=32 temps<1ms TTL=128\n\nStatistiques Ping pour 127.0.0.1:\nPaquets : envoyes = 4, recus = 4, perdus = 0 (perte 0%),\nDuree approximative des boucles en millisecondes :\nMinimum = 0ms, Maximum = 0ms, Moyenne = 0ms\n",
+    "time": 1,
+    "min": "0.000",
+    "max": "0.000",
+    "avg": "0.000",
+    "stddev": "1.000"
+  },
+  "window_fr_sample2": {
+    "host": "8.8.8.8",
+    "numeric_host": "8.8.8.8",
+    "alive": true,
+    "output": "Envoi d’une requete 'Ping' 8.8.8.8 avec 32 octets de donnees :\nReponse de 8.8.8.8 : octets=32 temps=6 ms TTL=58\nReponse de 8.8.8.8 : octets=32 temps=6 ms TTL=58\nReponse de 8.8.8.8 : octets=32 temps=6 ms TTL=58\nReponse de 8.8.8.8 : octets=32 temps=6 ms TTL=58\n\nStatistiques Ping pour 8.8.8.8:\nPaquets : envoyes = 4, recus = 4, perdus = 0 (perte 0%),\nDuree approximative des boucles en millisecondes :\nMinimum = 6ms, Maximum = 6ms, Moyenne = 6ms\n",
+    "time": 6,
+    "min": "6.000",
+    "max": "6.000",
+    "avg": "6.000",
+    "stddev": "0.000"
+  },
   "window_zh_sample1": {
     "host": "google.com",
     "numeric_host": "216.58.203.14",
