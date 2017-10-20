@@ -121,6 +121,7 @@ Below is the possible configuration
  * @param {boolean} alive - True for existed host
  * @param {string} output - Raw stdout from system ping
  * @param {number} time - Time (float) in ms for first successful ping response
+ * @param {Array} times - Array of Time (float) in ms for each ping response
  * @param {string} min - Minimum time for collection records
  * @param {string} max - Maximum time for collection records
  * @param {string} avg - Average time for collection records
