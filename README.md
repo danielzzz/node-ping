@@ -42,7 +42,7 @@ hosts.forEach(function(host){
 var cfg = {
     timeout: 10,
     // WARNING: -i 2 may not work in other platform like window
-    extra: ["-i 2"],
+    extra: ['-i', '2'],
 };
 
 hosts.forEach(function(host){
@@ -75,7 +75,7 @@ hosts.forEach(function (host) {
     // WARNING: -i 2 argument may not work in other platform like window
     ping.promise.probe(host, {
         timeout: 10,
-        extra: ["-i 2"],
+        extra: ['-i', '2'],
     }).then(function (res) {
         console.log(res);
     });
@@ -121,6 +121,7 @@ Below is the possible configuration
  * @param {boolean} alive - True for existed host
  * @param {string} output - Raw stdout from system ping
  * @param {number} time - Time (float) in ms for first successful ping response
+ * @param {Array} times - Array of Time (float) in ms for each ping response
  * @param {string} min - Minimum time for collection records
  * @param {string} max - Maximum time for collection records
  * @param {string} avg - Average time for collection records

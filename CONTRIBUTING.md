@@ -38,6 +38,12 @@ Value of that key should be the result from our command.
     "alive": true,
     "output": "PING google.com (172.217.24.46): 56 data bytes\n64 bytes from 172.217.24.46: icmp_seq=0 ttl=54 time=5.371 ms\n64 bytes from 172.217.24.46: icmp_seq=1 ttl=54 time=4.269 ms\n64 bytes from 172.217.24.46: icmp_seq=2 ttl=54 time=4.970 ms\n64 bytes from 172.217.24.46: icmp_seq=3 ttl=54 time=5.228 ms\n\n--- google.com ping statistics ---\n4 packets transmitted, 4 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 4.269/4.960/5.371/0.424 ms\n",
     "time": 5.371,
+    "times": [
+      5.371,
+      4.269,
+      4.97,
+      5.228
+    ],
     "min": 4.269,
     "max": 4.96,
     "avg": 5.371,

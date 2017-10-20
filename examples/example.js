@@ -14,12 +14,12 @@ hosts.forEach(function(host){
     ping.sys.probe(host, function(isAlive){
         var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
         console.log(msg);
-    }, {extra: ["-i 2"]});
+    }, {extra: ['-i', '2']});
 
     // Running ping with some default argument gone
     ping.sys.probe(host, function(isAlive){
         var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
         console.log(msg);
-    }, {extra: ["-i 2"], timeout: false});
+    }, {extra: ['-i', '2'], timeout: false});
 });
 
