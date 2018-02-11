@@ -135,11 +135,13 @@ describe('Ping in callback mode', function () {
             }
         };
 
-        if (args) {
-            ping.sys.probe('whatever', cb, args);
-        } else {
-            ping.sys.probe('whatever', cb);
+        var _args = args;
+        if (fp.includes('v6')) {
+            _args = _args || {};
+            _args.v6 = true;
         }
+
+        ping.sys.probe('whatever', cb, _args);
 
         stub.restore();
 
@@ -165,11 +167,12 @@ describe('Ping in promise mode', function () {
         );
 
         var ret = null;
-        if (args) {
-            ret = ping.promise.probe('whatever', args);
-        } else {
-            ret = ping.promise.probe('whatever');
+        var _args = args;
+        if (fp.includes('v6')) {
+            _args = _args || {};
+            _args.v6 = true;
         }
+        ret = ping.promise.probe('whatever', _args);
 
         stub.restore();
 
