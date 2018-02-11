@@ -94,6 +94,7 @@ Below is the possible configuration
  * @property {number} timeout - Time duration for ping command to exit
  * @property {number} min_reply - Exit after sending number of ECHO_REQUEST
  * @property {boolean} v6 - Ping via ipv6 or not. Default is false
+ * @property {string} sourceAddr - source address for sending the ping
  * @property {string[]} extra - Optional options does not provided
  */
 ```
