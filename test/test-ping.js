@@ -135,11 +135,13 @@ describe('Ping in callback mode', function () {
             }
         };
 
-        if (args) {
-            ping.sys.probe('whatever', cb, args);
-        } else {
-            ping.sys.probe('whatever', cb);
+        var _args = args;
+        if (fp.includes('v6')) {
+            _args = _args || {};
+            _args.v6 = true;
         }
+
+        ping.sys.probe('whatever', cb, _args);
 
         stub.restore();
 
@@ -165,11 +167,12 @@ describe('Ping in promise mode', function () {
         );
 
         var ret = null;
-        if (args) {
-            ret = ping.promise.probe('whatever', args);
-        } else {
-            ret = ping.promise.probe('whatever');
+        var _args = args;
+        if (fp.includes('v6')) {
+            _args = _args || {};
+            _args.v6 = true;
         }
+        ret = ping.promise.probe('whatever', _args);
 
         stub.restore();
 
@@ -183,5 +186,51 @@ describe('Ping in promise mode', function () {
 
     PLATFORMS.forEach(function (platform) {
         createTestCase(platform, pingExecution);
+    });
+});
+
+describe('Ping ipv6 on MAC OS', function () {
+    var platform = 'darwin';
+    var stubs = [];
+
+    before(function () {
+        stubs.push(
+            sinon.stub(os, 'platform', function () { return platform; })
+        );
+    });
+
+    after(function () {
+        stubs.forEach(function (stub) {
+            stub.restore();
+        });
+    });
+
+    describe('With timeout setting', function () {
+        var fixturePaths = loadFixturePath(platform);
+
+        fixturePaths.forEach(function (fp) {
+            it('Should raise an error', function (done) {
+                var stub = sinon.stub(
+                    cp,
+                    'spawn',
+                    mockOutSpawn(fp)
+                );
+
+                var ret = ping.promise.probe(
+                    'whatever',
+                    {v6: true, timeout: 10}
+                );
+
+                stub.restore();
+
+                return ret.then(function () {
+                    throw new Error('It should not be success');
+                }).catch(function (err) {
+                    expect(err.message).to.be.a('string');
+                    expect(err.message).to.include('no timeout option');
+                    done();
+                });
+            });
+        });
     });
 });

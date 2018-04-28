@@ -185,5 +185,20 @@
     "max": "38.000",
     "avg": "35.000",
     "stddev": "2.121"
-  }
+  },
+  "window_de_v6_sample": { "host": "google.de",
+    "alive": true,
+    "output": "Ping wird ausgeführt für google.de [2a00:1450:4001:810::2003] von 3001:4cb0:0:f282:ddf1:bec9:1e0:bfa9 mit 32 Bytes Daten:\nAntwort von 2a00:1450:4001:810::2003: Zeit=11ms\nAntwort von 2a00:1450:4001:810::2003: Zeit=11ms\nAntwort von 2a00:1450:4001:810::2003: Zeit=18ms\nAntwort von 2a00:1450:4001:810::2003: Zeit=11ms\n\nPing-Statistik für 2a00:1450:4001:810::2003:\n    Pakete: Gesendet = 4, Empfangen = 4, Verloren = 0\n    (0% Verlust),\nCa. Zeitangaben in Millisek.:\n    Minimum = 11ms, Maximum = 18ms, Mittelwert = 12ms\n",
+    "time": 11,
+    "times": [
+        11,
+        11,
+        18,
+        11
+    ],
+    "min": "11.000",
+    "max": "18.000",
+    "avg": "12.000",
+    "stddev": "3.122",
+    "numeric_host": "2a00:1450:4001:810::2003" }
 }

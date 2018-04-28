@@ -1,0 +1,11 @@
+Ping wird ausgeführt für google.de [2a00:1450:4001:810::2003] von 3001:4cb0:0:f282:ddf1:bec9:1e0:bfa9 mit 32 Bytes Daten:
+Antwort von 2a00:1450:4001:810::2003: Zeit=11ms
+Antwort von 2a00:1450:4001:810::2003: Zeit=11ms
+Antwort von 2a00:1450:4001:810::2003: Zeit=18ms
+Antwort von 2a00:1450:4001:810::2003: Zeit=11ms
+
+Ping-Statistik für 2a00:1450:4001:810::2003:
+    Pakete: Gesendet = 4, Empfangen = 4, Verloren = 0
+    (0% Verlust),
+Ca. Zeitangaben in Millisek.:
+    Minimum = 11ms, Maximum = 18ms, Mittelwert = 12ms

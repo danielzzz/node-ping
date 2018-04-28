@@ -60,4 +60,9 @@ a pull request
 $ grunt test
 ```
 
+## Running ipv6 test cases
+
+As #67 introduces ipv6 mechanism, fixture file names with `v6` will enable v6.
+Please refer to window/de/v6_sample.txt for an example
+
 [1]: http://www.jsoneditoronline.org/
