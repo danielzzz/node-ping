@@ -223,7 +223,7 @@ describe('Ping ipv6 on MAC OS', function () {
 
                 stub.restore();
 
-                return ret.then(function () {
+                ret.then(function () {
                     throw new Error('It should not be success');
                 }).catch(function (err) {
                     expect(err.message).to.be.a('string');
