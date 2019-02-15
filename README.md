@@ -68,7 +68,7 @@ hosts.forEach(function (host) {
 });
 ```
 
-## Promise Wrapper with configable ping options
+## Promise Wrapper with configurable ping options
 
 ```js
 hosts.forEach(function (host) {
@@ -101,7 +101,7 @@ Below is the possible configuration
 
 ### Output specification
 
-* For callback based implementaiton:
+* For callback based implementation:
 
 ```js
 /**
