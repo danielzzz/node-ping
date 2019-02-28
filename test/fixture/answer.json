@@ -33,7 +33,7 @@
     "avg": "0.027",
     "stddev": "0.003"
   },
-  "linux_en_sample2": {
+  "linux_en_v6_sample1": {
     "host": "2606:4700:4700::1111",
     "numeric_host": "2606:4700:4700::1111",
     "alive": true,
@@ -48,7 +48,7 @@
     "avg": "0.840",
     "stddev": "0.170"
   },
-  "linux_en_sample3": {
+  "linux_en_v6_sample2": {
     "host": "one.one.one.one",
     "numeric_host": "2606:4700:4700::1111",
     "alive": true,
