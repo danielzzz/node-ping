@@ -145,7 +145,7 @@ without corresponding arguments.
 
 # FAQ
 
-* It does not work with busybox's ping implemetation [#89]
+* It does not work with busybox's ping implemetation [#89](https://github.com/danielzzz/node-ping/issues/89)
 
 Try to install package `iputils`. For example, running `apk add iputils`
 
