@@ -2,7 +2,7 @@
 
 a ping wrapper for nodejs
 
-@last-modified: 2018-09-30 12:43
+@last-modified: 2019-03-09
 
 # LICENSE MIT
 
@@ -142,6 +142,12 @@ them are expected to be cross platform.
 
 * By setting `numeric`, `timeout` or `min_reply` to false, you can run `ping`
 without corresponding arguments.
+
+# FAQ
+
+* It does not work with busybox's ping implemetation [#89]
+
+Try to install package `iputils`. For example, running `apk add iputils`
 
 # Contributing
 
