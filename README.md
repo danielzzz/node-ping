@@ -148,6 +148,12 @@ make sure arguments you are passing in into this library are sanitized.
 Otherwise, any input containing shell metacharacters may be used to trigger
 arbitrary command
 
+# FAQ
+
+* It does not work with busybox's ping implemetation [#89](https://github.com/danielzzz/node-ping/issues/89)
+
+Try to install package `iputils`. For example, running `apk add iputils`
+
 # Contributing
 
 Before opening a pull request please make sure your changes follow the
