@@ -14,7 +14,8 @@
     "min": "4.269",
     "max": "5.371",
     "avg": "4.960",
-    "stddev": "0.424"
+    "stddev": "0.424",
+    "lost": "0.000"
   },
   "linux_en_sample1": {
     "host": "localhost",
@@ -31,7 +32,8 @@
     "min": "0.022",
     "max": "0.030",
     "avg": "0.027",
-    "stddev": "0.003"
+    "stddev": "0.003",
+    "lost": "0.000"
   },
   "window_en_sample1": {
     "host": "www.some-domain.com",
@@ -48,7 +50,8 @@
     "min": "548.000",
     "max": "564.000",
     "avg": "555.000",
-    "stddev": "5.723"
+    "stddev": "5.723",
+    "lost": "0.000"
   },
   "window_fr_sample1": {
     "host": "127.0.0.1",
@@ -65,7 +68,8 @@
     "min": "0.000",
     "max": "0.000",
     "avg": "0.000",
-    "stddev": "1.000"
+    "stddev": "1.000",
+    "lost": "0.000"
   },
   "window_fr_sample2": {
     "host": "8.8.8.8",
@@ -82,7 +86,8 @@
     "min": "6.000",
     "max": "6.000",
     "avg": "6.000",
-    "stddev": "0.000"
+    "stddev": "0.000",
+    "lost": "0.000"
   },
   "window_ja_sample1": {
     "host": "google.com",
@@ -99,7 +104,8 @@
     "min": "4.000",
     "max": "7.000",
     "avg": "5.000",
-    "stddev": "1.225"
+    "stddev": "1.225",
+    "lost": "0.000"
   },
   "window_ja_sample2": {
     "host": "8.8.8.8",
@@ -116,7 +122,8 @@
     "min": "4.000",
     "max": "6.000",
     "avg": "4.000",
-    "stddev": "1.118"
+    "stddev": "1.118",
+    "lost": "0.000"
   },
   "window_zh_sample1": {
     "host": "google.com",
@@ -133,7 +140,8 @@
     "min": "2.000",
     "max": "3.000",
     "avg": "2.000",
-    "stddev": "0.707"
+    "stddev": "0.707",
+    "lost": "0.000"
   },
   "window_zh_sample2": {
     "host": "google.com",
@@ -150,7 +158,8 @@
     "min": "2.000",
     "max": "3.000",
     "avg": "2.000",
-    "stddev": "0.707"
+    "stddev": "0.707",
+    "lost": "0.000"
   },
   "window_zh_sample3": {
     "host": "127.0.0.1",
@@ -167,7 +176,8 @@
     "min": "0.000",
     "max": "0.000",
     "avg": "0.000",
-    "stddev": "1.000"
+    "stddev": "1.000",
+    "lost": "0.000"
   },
   "window_ru_sample1": {
     "host": "8.8.8.8",
@@ -184,7 +194,8 @@
     "min": "33.000",
     "max": "38.000",
     "avg": "35.000",
-    "stddev": "2.121"
+    "stddev": "2.121",
+    "lost": "0.000"
   },
   "window_de_v6_sample": { "host": "google.de",
     "alive": true,
@@ -200,5 +211,6 @@
     "max": "18.000",
     "avg": "12.000",
     "stddev": "3.122",
+    "lost": "0.000",
     "numeric_host": "2a00:1450:4001:810::2003" }
 }
