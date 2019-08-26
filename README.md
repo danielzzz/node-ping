@@ -91,12 +91,13 @@ Below is the possible configuration
  * Cross platform config representation
  * @typedef {Object} PingConfig
  * @property {boolean} numeric - Map IP address to hostname or not
- * @property {number} timeout - Time duration, in seconds, for ping command to exit
+ * @property {number} timeout - Timeout in seconds for each ping request.
+ * Behaviour varies between platforms. Check platform ping documentation for more information.
  * @property {number} deadline - Specify a timeout, in seconds, before ping exits regardless of
               how many packets have been sent or received. In this case ping
               does not stop after count packet are sent, it waits either for
               deadline expire or until count probes are answered or for some
-              error notification from network. This option is only available on linux.
+              error notification from network. This option is only available on linux and mac.
  * @property {number} min_reply - Exit after sending number of ECHO_REQUEST
  * @property {boolean} v6 - Ping via ipv6 or not. Default is false
  * @property {string} sourceAddr - source address for sending the ping

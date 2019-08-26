@@ -185,13 +185,16 @@ describe('ping timeout and deadline options', function () {
             this.spawnStub.restore();
         });
 
-        it('results in an error as deadline is not supported', function () {
+        it('are forwarded to the ping binary', function () {
             return ping.promise.probe('whatever', {
                 timeout: 47,
                 deadline: 83,
             }).then(function () {
-                throw new Error('deadline should result in an error');
-            }).catch(function () {});
+                const spawnArgs = this.spawnStub.getCalls()[0].args;
+                const pingArgs = spawnArgs[1];
+                expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47');
+                expect(pingArgs[pingArgs.indexOf('-t') + 1]).to.equal('83');
+            }.bind(this));
         });
     });
 });
