@@ -192,7 +192,7 @@ describe('ping timeout and deadline options', function () {
             }).then(function () {
                 const spawnArgs = this.spawnStub.getCalls()[0].args;
                 const pingArgs = spawnArgs[1];
-                expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47');
+                expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('4700');
                 expect(pingArgs[pingArgs.indexOf('-t') + 1]).to.equal('83');
             }.bind(this));
         });
