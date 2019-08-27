@@ -155,6 +155,8 @@ without corresponding arguments.
 
 Try to install package `iputils`. For example, running `apk add iputils`
 
+* For questions regarding to the implementation of `timeout`, and `deadline`, please checkout discussions in #101
+
 # Contributing
 
 Before opening a pull request please make sure your changes follow the
