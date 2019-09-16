@@ -1,4 +1,5 @@
 'use strict';
+
 /* global describe it before after*/
 /* eslint no-unused-expressions: 0 */
 
@@ -17,6 +18,7 @@ var ping = require('..');
 
 // Some constants
 var ANSWER = require('./fixture/answer');
+
 var PLATFORMS = [
     'window',
     'darwin',
@@ -116,6 +118,86 @@ var createTestCase = function (platform, pingExecution) {
         });
     });
 };
+
+describe('ping timeout and deadline options', function () {
+    describe('on linux platform', function () {
+        beforeEach(function () {
+            this.platformStub = sinon.stub(os, 'platform',
+                function () { return 'linux'; });
+            const fixturePath = path.join(__dirname, 'fixture',
+                'linux', 'en', 'sample1.txt');
+            this.spawnStub = sinon.stub(cp, 'spawn', mockOutSpawn(fixturePath));
+        });
+
+        afterEach(function () {
+            this.platformStub.restore();
+            this.spawnStub.restore();
+        });
+
+        it('are forwarded to the ping binary', function () {
+            return ping.promise.probe('whatever', {
+                timeout: 47,
+                deadline: 83,
+            }).then(function () {
+                const spawnArgs = this.spawnStub.getCalls()[0].args;
+                const pingArgs = spawnArgs[1];
+                expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47');
+                expect(pingArgs[pingArgs.indexOf('-w') + 1]).to.equal('83');
+            }.bind(this));
+        });
+    });
+
+    describe('on windows platform', function () {
+        beforeEach(function () {
+            this.platformStub = sinon.stub(os, 'platform',
+                function () { return 'window'; });
+            const fixturePath = path.join(__dirname, 'fixture',
+                'window', 'en', 'sample1.txt');
+            this.spawnStub = sinon.stub(cp, 'spawn', mockOutSpawn(fixturePath));
+        });
+
+        afterEach(function () {
+            this.platformStub.restore();
+            this.spawnStub.restore();
+        });
+
+        it('results in an error as deadline is not supported', function () {
+            return ping.promise.probe('whatever', {
+                timeout: 47,
+                deadline: 83,
+            }).then(function () {
+                throw new Error('deadline should result in an error');
+            }).catch(function () {});
+        });
+    });
+
+    describe('on mac platform', function () {
+        beforeEach(function () {
+            this.platformStub = sinon.stub(os, 'platform',
+                function () { return 'freebsd'; });
+            const fixturePath = path.join(__dirname, 'fixture',
+                'macos', 'en', 'sample1.txt');
+            this.spawnStub = sinon.stub(cp, 'spawn', mockOutSpawn(fixturePath));
+        });
+
+        afterEach(function () {
+            this.platformStub.restore();
+            this.spawnStub.restore();
+        });
+
+        it('are forwarded to the ping binary', function () {
+            return ping.promise.probe('whatever', {
+                timeout: 47,
+                deadline: 83,
+            }).then(function () {
+                const spawnArgs = this.spawnStub.getCalls()[0].args;
+                const pingArgs = spawnArgs[1];
+                expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('4700');
+                expect(pingArgs[pingArgs.indexOf('-t') + 1]).to.equal('83');
+            }.bind(this));
+        });
+    });
+});
 
 describe('Ping in callback mode', function () {
     var pingExecution = function (fp, args) {

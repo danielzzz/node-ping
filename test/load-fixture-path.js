@@ -55,7 +55,7 @@ module.exports = function (platform) {
         '**',
         '*.txt',
     ]);
-	targetDirectory = path.posix.join.apply(path.posix, targetDirectory);
+    targetDirectory = path.posix.join.apply(path.posix, targetDirectory);
 
     return glob.sync(targetDirectory);
 };
