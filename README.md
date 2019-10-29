@@ -133,6 +133,7 @@ Below is the possible configuration
  * @param {string} min - Minimum time for collection records
  * @param {string} max - Maximum time for collection records
  * @param {string} avg - Average time for collection records
+ * @param {number} packetLoss - Packet Losses in percent (number)
  * @param {string} stddev - Standard deviation time for collected records
  */
 ```
