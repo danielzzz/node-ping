@@ -33,6 +33,36 @@
     "avg": "0.027",
     "stddev": "0.003"
   },
+  "linux_en_v6_sample1": {
+    "host": "2606:4700:4700::1111",
+    "numeric_host": "2606:4700:4700::1111",
+    "alive": true,
+    "output": "PING 2606:4700:4700::1111(2606:4700:4700::1111) 56 data bytes\n64 bytes from 2606:4700:4700::1111: icmp_seq=1 ttl=57 time=0.672 ms\n64 bytes from 2606:4700:4700::1111: icmp_seq=2 ttl=57 time=1.00 ms\n\n--- 2606:4700:4700::1111 ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1000ms\nrtt min/avg/max/mdev = 0.672/0.840/1.009/0.170 ms\n",
+    "time": 0.672,
+    "times": [
+      0.672,
+      1.00
+    ],
+    "min": "0.672",
+    "max": "1.009",
+    "avg": "0.840",
+    "stddev": "0.170"
+  },
+  "linux_en_v6_sample2": {
+    "host": "one.one.one.one",
+    "numeric_host": "2606:4700:4700::1111",
+    "alive": true,
+    "output": "PING one.one.one.one(one.one.one.one (2606:4700:4700::1111)) 56 data bytes\n64 bytes from one.one.one.one (2606:4700:4700::1111): icmp_seq=1 ttl=60 time=1.66 ms\n64 bytes from one.one.one.one (2606:4700:4700::1111): icmp_seq=2 ttl=60 time=1.42 ms\n\n--- one.one.one.one ping statistics ---\n2 packets transmitted, 2 received, 0% packet loss, time 1001ms\nrtt min/avg/max/mdev = 1.429/1.546/1.663/0.117 ms\n",
+    "time": 1.66,
+    "times": [
+      1.66,
+      1.42
+    ],
+    "min": "1.429",
+    "max": "1.663",
+    "avg": "1.546",
+    "stddev": "0.117"
+  },
   "window_en_sample1": {
     "host": "www.some-domain.com",
     "numeric_host": "127.0.0.1",
