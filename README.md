@@ -192,7 +192,8 @@ arbitrary command
 
 Try to install package `iputils`. For example, running `apk add iputils`
 
-* For questions regarding to the implementation of `timeout`, and `deadline`, please checkout discussions in #101
+* For questions regarding to the implementation of `timeout`, and `deadline`, please checkout discussions in
+  [#101](https://github.com/danielzzz/node-ping/issues/101)
 
 # Contributing
 
