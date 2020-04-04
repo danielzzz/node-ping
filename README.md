@@ -2,7 +2,7 @@
 
 a ping wrapper for nodejs
 
-@last-modified: 2019-06-07
+@last-modified: 2020-04-04
 
 # LICENSE MIT
 
@@ -165,6 +165,7 @@ Below is the possible configuration
  * @param {string} min - Minimum time for collection records
  * @param {string} max - Maximum time for collection records
  * @param {string} avg - Average time for collection records
+ * @param {string} packetLoss - Packet Losses in percent (100% -> "100.000")
  * @param {string} stddev - Standard deviation time for collected records
  */
 ```
