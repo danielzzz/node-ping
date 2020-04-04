@@ -2,7 +2,7 @@
 
 a ping wrapper for nodejs
 
-@last-modified: 2019-03-09
+@last-modified: 2019-06-07
 
 # LICENSE MIT
 
@@ -82,6 +82,38 @@ hosts.forEach(function (host) {
 });
 ```
 
+
+## Async-Await 
+```js
+var ping = require('ping');
+
+var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
+
+for(let host of hosts){
+    let res = await ping.promise.probe(host);
+    console.log(res);
+}
+
+});
+```
+
+## Async-Await with configurable ping options
+```js
+var ping = require('ping');
+
+var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
+
+for(let host of hosts){
+     // WARNING: -i 2 argument may not work in other platform like window
+    let res = await ping.promise.probe(host, {
+           timeout: 10,
+           extra: ['-i', '2'],
+       });
+    console.log(res);
+}
+
+});
+```
 ### Support configuration
 
 Below is the possible configuration
@@ -150,13 +182,19 @@ them are expected to be cross platform.
 * By setting `numeric`, `timeout` or `min_reply` to false, you can run `ping`
 without corresponding arguments.
 
+* For LINUX users, since we have enable `shell` option in child_process.spawn,
+make sure arguments you are passing in into this library are sanitized.
+Otherwise, any input containing shell metacharacters may be used to trigger
+arbitrary command
+
 # FAQ
 
 * It does not work with busybox's ping implemetation [#89](https://github.com/danielzzz/node-ping/issues/89)
 
 Try to install package `iputils`. For example, running `apk add iputils`
 
-* For questions regarding to the implementation of `timeout`, and `deadline`, please checkout discussions in #101
+* For questions regarding to the implementation of `timeout`, and `deadline`, please checkout discussions in
+  [#101](https://github.com/danielzzz/node-ping/issues/101)
 
 # Contributing
 

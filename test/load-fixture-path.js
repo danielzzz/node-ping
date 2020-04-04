@@ -9,6 +9,7 @@ var glob = require('glob');
 function isLinux(p) {
     var platforms = [
         'aix',
+        'android',
         'linux',
     ];
 

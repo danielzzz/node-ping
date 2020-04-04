@@ -1,0 +1,7 @@
+PING one.one.one.one(one.one.one.one (2606:4700:4700::1111)) 56 data bytes
+64 bytes from one.one.one.one (2606:4700:4700::1111): icmp_seq=1 ttl=60 time=1.66 ms
+64 bytes from one.one.one.one (2606:4700:4700::1111): icmp_seq=2 ttl=60 time=1.42 ms
+
+--- one.one.one.one ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 1.429/1.546/1.663/0.117 ms
