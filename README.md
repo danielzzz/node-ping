@@ -133,6 +133,8 @@ Below is the possible configuration
  * @property {number} min_reply - Exit after sending number of ECHO_REQUEST
  * @property {boolean} v6 - Ping via ipv6 or not. Default is false
  * @property {string} sourceAddr - source address for sending the ping
+ * @property {number} packetSize - Specifies the number of data bytes to be sent
+                                   Default: Linux / MAC: 56 Bytes, Window: 32 Bytes
  * @property {string[]} extra - Optional options does not provided
  */
 ```
