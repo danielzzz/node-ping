@@ -47,13 +47,14 @@ Value of that key should be the result from our command.
     "min": 4.269,
     "max": 4.96,
     "avg": 5.371,
+    "packageLoss": 0.0
     "stddev": 0.424
 }
 ```
 
 ## Running test cases
 
-We trust tesed codes. Please run below command for testing before sending
+We trust tested codes. Please run below command for testing before sending
 a pull request
 
 ```
@@ -65,4 +66,4 @@ $ grunt test
 As #67 introduces ipv6 mechanism, fixture file names with `v6` will enable v6.
 Please refer to window/de/v6_sample.txt for an example
 
-[1]: http://www.jsoneditoronline.org/
+[1]: https://jsoneditoronline.org

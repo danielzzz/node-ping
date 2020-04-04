@@ -1,0 +1,19 @@
+PING 10.48.249.8 (10.48.249.8) 56(84) bytes of data.
+64 bytes from 10.48.249.8: icmp_seq=1 ttl=64 time=2.98 ms
+64 bytes from 10.48.249.8: icmp_seq=2 ttl=64 time=0.890 ms
+64 bytes from 10.48.249.8: icmp_seq=3 ttl=64 time=0.711 ms
+64 bytes from 10.48.249.8: icmp_seq=4 ttl=64 time=0.863 ms
+64 bytes from 10.48.249.8: icmp_seq=5 ttl=64 time=1.20 ms
+ping: sendmsg: Network is unreachable
+ping: sendmsg: Network is unreachable
+ping: sendmsg: Network is unreachable
+64 bytes from 10.48.249.8: icmp_seq=14 ttl=64 time=797 ms
+64 bytes from 10.48.249.8: icmp_seq=15 ttl=64 time=3.86 ms
+64 bytes from 10.48.249.8: icmp_seq=16 ttl=64 time=1.62 ms
+64 bytes from 10.48.249.8: icmp_seq=17 ttl=64 time=0.702 ms
+64 bytes from 10.48.249.8: icmp_seq=18 ttl=64 time=0.783 ms
+64 bytes from 10.48.249.8: icmp_seq=19 ttl=64 time=0.646 ms
+
+--- 10.48.249.8 ping statistics ---
+19 packets transmitted, 11 received, 42% packet loss, time 18195ms
+rtt min/avg/max/mdev = 0.646/73.819/797.744/228.927 ms

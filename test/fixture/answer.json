@@ -14,8 +14,8 @@
     "min": "4.269",
     "max": "5.371",
     "avg": "4.960",
-    "stddev": "0.424",
-    "lost": "0.000"
+    "packetLoss": "0.000",
+    "stddev": "0.424"
   },
   "linux_en_sample1": {
     "host": "localhost",
@@ -33,7 +33,45 @@
     "max": "0.030",
     "avg": "0.027",
     "stddev": "0.003",
-    "lost": "0.000"
+    "packetLoss": "0.000"
+  },
+  "linux_en_sample2": {
+    "host": "10.48.249.8",
+    "numeric_host": "10.48.249.8",
+    "alive": true,
+    "output": "PING 10.48.249.8 (10.48.249.8) 56(84) bytes of data.\n64 bytes from 10.48.249.8: icmp_seq=1 ttl=64 time=2.98 ms\n64 bytes from 10.48.249.8: icmp_seq=2 ttl=64 time=0.890 ms\n64 bytes from 10.48.249.8: icmp_seq=3 ttl=64 time=0.711 ms\n64 bytes from 10.48.249.8: icmp_seq=4 ttl=64 time=0.863 ms\n64 bytes from 10.48.249.8: icmp_seq=5 ttl=64 time=1.20 ms\nping: sendmsg: Network is unreachable\nping: sendmsg: Network is unreachable\nping: sendmsg: Network is unreachable\n64 bytes from 10.48.249.8: icmp_seq=14 ttl=64 time=797 ms\n64 bytes from 10.48.249.8: icmp_seq=15 ttl=64 time=3.86 ms\n64 bytes from 10.48.249.8: icmp_seq=16 ttl=64 time=1.62 ms\n64 bytes from 10.48.249.8: icmp_seq=17 ttl=64 time=0.702 ms\n64 bytes from 10.48.249.8: icmp_seq=18 ttl=64 time=0.783 ms\n64 bytes from 10.48.249.8: icmp_seq=19 ttl=64 time=0.646 ms\n\n--- 10.48.249.8 ping statistics ---\n19 packets transmitted, 11 received, 42% packet loss, time 18195ms\nrtt min/avg/max/mdev = 0.646/73.819/797.744/228.927 ms\n",
+    "time": 2.98,
+    "times": [
+      2.98,
+      0.89,
+      0.711,
+      0.863,
+      1.2,
+      797,
+      3.86,
+      1.62,
+      0.702,
+      0.783,
+      0.646
+    ],
+    "min": "0.646",
+    "max": "797.744",
+    "avg": "73.819",
+    "packetLoss": "42.000",
+    "stddev": "228.927"
+  },
+  "linux_en_sample3": {
+    "host": "10.48.249.150",
+    "numeric_host": "10.48.249.150",
+    "alive": false,
+    "output": "PING 10.48.249.150 (10.48.249.150) 56(84) bytes of data.\nFrom 10.48.249.95 icmp_seq=1 Destination Host Unreachable\nFrom 10.48.249.95 icmp_seq=2 Destination Host Unreachable\nFrom 10.48.249.95 icmp_seq=3 Destination Host Unreachable\n\n--- 10.48.249.150 ping statistics ---\n5 packets transmitted, 0 received, +3 errors, 100% packet loss, time 4079ms\n",
+    "time": "unknown",
+    "times": [],
+    "min": "unknown",
+    "max": "unknown",
+    "avg": "unknown",
+    "packetLoss": "100.000",
+    "stddev": "unknown"
   },
   "window_en_sample1": {
     "host": "www.some-domain.com",
@@ -51,7 +89,8 @@
     "max": "564.000",
     "avg": "555.000",
     "stddev": "5.723",
-    "lost": "0.000"
+    "packetLoss": "0.000",
+    "stddev": "5.723"
   },
   "window_fr_sample1": {
     "host": "127.0.0.1",
@@ -69,7 +108,7 @@
     "max": "0.000",
     "avg": "0.000",
     "stddev": "1.000",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_fr_sample2": {
     "host": "8.8.8.8",
@@ -87,7 +126,7 @@
     "max": "6.000",
     "avg": "6.000",
     "stddev": "0.000",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_ja_sample1": {
     "host": "google.com",
@@ -105,7 +144,7 @@
     "max": "7.000",
     "avg": "5.000",
     "stddev": "1.225",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_ja_sample2": {
     "host": "8.8.8.8",
@@ -123,7 +162,7 @@
     "max": "6.000",
     "avg": "4.000",
     "stddev": "1.118",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_zh_sample1": {
     "host": "google.com",
@@ -141,7 +180,7 @@
     "max": "3.000",
     "avg": "2.000",
     "stddev": "0.707",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_zh_sample2": {
     "host": "google.com",
@@ -159,7 +198,7 @@
     "max": "3.000",
     "avg": "2.000",
     "stddev": "0.707",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_zh_sample3": {
     "host": "127.0.0.1",
@@ -177,7 +216,7 @@
     "max": "0.000",
     "avg": "0.000",
     "stddev": "1.000",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_ru_sample1": {
     "host": "8.8.8.8",
@@ -195,7 +234,7 @@
     "max": "38.000",
     "avg": "35.000",
     "stddev": "2.121",
-    "lost": "0.000"
+    "packetLoss": "0.000"
   },
   "window_de_v6_sample": { "host": "google.de",
     "alive": true,
@@ -210,6 +249,7 @@
     "min": "11.000",
     "max": "18.000",
     "avg": "12.000",
+    "packetLoss": 0,
     "stddev": "3.122",
     "lost": "0.000",
     "numeric_host": "2a00:1450:4001:810::2003" }
