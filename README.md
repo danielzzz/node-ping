@@ -93,8 +93,6 @@ for(let host of hosts){
     let res = await ping.promise.probe(host);
     console.log(res);
 }
-
-});
 ```
 
 ## Async-Await with configurable ping options
@@ -111,8 +109,6 @@ for(let host of hosts){
        });
     console.log(res);
 }
-
-});
 ```
 ### Support configuration
 
