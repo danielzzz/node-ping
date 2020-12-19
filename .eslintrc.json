@@ -1086,7 +1086,15 @@
     "yoda": [
       2,
       "never"
-    ]
+    ],
+    "jsdoc/no-undefined-types": 0,
+    "jsdoc/require-returns": 0,
+    "jsdoc/check-tag-names": 0,
+    "jsdoc/check-types": 0,
+    "jsdoc/check-alignment": 0,
+    "jsdoc/require-property": 0,
+    "jsdoc/require-param": 0,
+    "prefer-destructuring": 0
   },
   "parserOptions": {
     "ecmaFeatures": {
@@ -1105,7 +1113,8 @@
   },
   "extends": [
     "eslint-config-eslint",
-    "eslint-config-airbnb"
+    "eslint-config-airbnb",
+    "plugin:jsdoc/recommended"
   ],
   "plugins": [
   ]
