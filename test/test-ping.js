@@ -70,7 +70,7 @@ var createTestCase = function (platform, pingExecution) {
 
         before(function () {
             stubs.push(
-                sinon.stub(os, 'platform', function () { return platform; })
+                sinon.stub(os, 'platform').callsFake(function () { return platform; })
             );
         });
 
@@ -124,11 +124,10 @@ var createTestCase = function (platform, pingExecution) {
 describe('ping timeout and deadline options', function () {
     describe('on linux platform', function () {
         beforeEach(function () {
-            this.platformStub = sinon.stub(os, 'platform',
-                function () { return 'linux'; });
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function () { return 'linux'; });
             const fixturePath = path.join(__dirname, 'fixture',
                 'linux', 'en', 'sample1.txt');
-            this.spawnStub = sinon.stub(cp, 'spawn', mockOutSpawn(fixturePath));
+            this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
         });
 
         afterEach(function () {
@@ -151,11 +150,10 @@ describe('ping timeout and deadline options', function () {
 
     describe('on windows platform', function () {
         beforeEach(function () {
-            this.platformStub = sinon.stub(os, 'platform',
-                function () { return 'window'; });
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function () { return 'window'; });
             const fixturePath = path.join(__dirname, 'fixture',
                 'window', 'en', 'sample1.txt');
-            this.spawnStub = sinon.stub(cp, 'spawn', mockOutSpawn(fixturePath));
+            this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
         });
 
         afterEach(function () {
@@ -175,11 +173,10 @@ describe('ping timeout and deadline options', function () {
 
     describe('on mac platform', function () {
         beforeEach(function () {
-            this.platformStub = sinon.stub(os, 'platform',
-                function () { return 'freebsd'; });
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function () { return 'freebsd'; });
             const fixturePath = path.join(__dirname, 'fixture',
                 'macos', 'en', 'sample1.txt');
-            this.spawnStub = sinon.stub(cp, 'spawn', mockOutSpawn(fixturePath));
+            this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
         });
 
         afterEach(function () {
@@ -205,11 +202,7 @@ describe('Ping in callback mode', function () {
     var pingExecution = function (fp, args) {
         var deferred = q.defer();
 
-        var stub = sinon.stub(
-            cp,
-            'spawn',
-            mockOutSpawn(fp)
-        );
+        var stub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fp));
 
         var cb = function (isAlive, err) {
             if (err) {
@@ -244,11 +237,7 @@ describe('Ping in callback mode', function () {
 
 describe('Ping in promise mode', function () {
     var pingExecution = function (fp, args) {
-        var stub = sinon.stub(
-            cp,
-            'spawn',
-            mockOutSpawn(fp)
-        );
+        var stub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fp));
 
         var ret = null;
         var _args = args;
@@ -279,7 +268,7 @@ describe('Ping ipv6 on MAC OS', function () {
 
     before(function () {
         stubs.push(
-            sinon.stub(os, 'platform', function () { return platform; })
+            sinon.stub(os, 'platform').callsFake(function () { return platform; })
         );
     });
 
@@ -294,11 +283,7 @@ describe('Ping ipv6 on MAC OS', function () {
 
         fixturePaths.forEach(function (fp) {
             it('Should raise an error', function (done) {
-                var stub = sinon.stub(
-                    cp,
-                    'spawn',
-                    mockOutSpawn(fp)
-                );
+                var stub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fp));
 
                 var ret = ping.promise.probe(
                     'whatever',
