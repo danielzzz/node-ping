@@ -303,3 +303,29 @@ describe('Ping ipv6 on MAC OS', function () {
         });
     });
 });
+
+describe('Ping in promise mode with unknown exception', function () {
+    var pingExecution = function (fp, args) {
+        var unknownException = new Error('Unknown error!');
+        var stub = sinon.stub(cp, 'spawn').throws(unknownException);
+
+        var ret = null;
+        var _args = args;
+        if (fp.includes('v6')) {
+            _args = _args || {};
+            _args.v6 = true;
+        }
+        ret = ping.promise.probe('whatever', _args);
+
+        stub.restore();
+
+        return ret.catch(function (err) {
+            expect(err.message).to.be.a('string');
+            expect(err.message).to.include('Unknown error!');
+        });
+    };
+
+    PLATFORMS.forEach(function (platform) {
+        createTestCase(platform, pingExecution);
+    });
+});
