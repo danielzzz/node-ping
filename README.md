@@ -2,7 +2,7 @@
 
 a ping wrapper for nodejs
 
-@last-modified: 2020-04-04
+@last-modified: 2020-12-19
 
 # LICENSE MIT
 
@@ -179,11 +179,6 @@ them are expected to be cross platform.
 
 * By setting `numeric`, `timeout` or `min_reply` to false, you can run `ping`
 without corresponding arguments.
-
-* For LINUX users, since we have enable `shell` option in child_process.spawn,
-make sure arguments you are passing in into this library are sanitized.
-Otherwise, any input containing shell metacharacters may be used to trigger
-arbitrary command
 
 # FAQ
 
