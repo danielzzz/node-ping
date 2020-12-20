@@ -1,4 +1,4 @@
-# NODE-PING
+# NODE-PING [![Build Status](https://travis-ci.com/danielzzz/node-ping.svg?branch=master)](https://travis-ci.com/danielzzz/node-ping)
 
 a ping wrapper for nodejs
 
