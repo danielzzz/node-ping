@@ -2,7 +2,7 @@
 
 a ping wrapper for nodejs
 
-@last-modified: 2020-12-19
+@last-modified: 2020-12-26
 
 # LICENSE MIT
 
@@ -154,7 +154,8 @@ Below is the possible configuration
 /**
  * Parsed response
  * @typedef {object} PingResponse
- * @param {string} host - The input IP address or HOST
+ * @param {string} inputHost - The input IP address or HOST
+ * @param {string} host - Parsed host from system command's output
  * @param {string} numeric_host - Target IP address
  * @param {boolean} alive - True for existed host
  * @param {string} output - Raw stdout from system ping
@@ -188,6 +189,9 @@ Try to install package `iputils`. For example, running `apk add iputils`
 
 * For questions regarding to the implementation of `timeout`, and `deadline`, please checkout discussions in
   [#101](https://github.com/danielzzz/node-ping/issues/101)
+
+* For questions regarding to the defintions of `host`, `inputHost`, and `numeric_host`, please checkout
+  discussions in [#133](https://github.com/danielzzz/node-ping/issues/133)
 
 # Contributing
 
