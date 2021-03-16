@@ -41,7 +41,7 @@ hosts.forEach(function(host){
 ```js
 var cfg = {
     timeout: 10,
-    // WARNING: -i 2 may not work in other platform like window
+    // WARNING: -i 2 may not work in other platform like windows
     extra: ['-i', '2'],
 };
 
@@ -72,7 +72,7 @@ hosts.forEach(function (host) {
 
 ```js
 hosts.forEach(function (host) {
-    // WARNING: -i 2 argument may not work in other platform like window
+    // WARNING: -i 2 argument may not work in other platform like windows
     ping.promise.probe(host, {
         timeout: 10,
         extra: ['-i', '2'],
@@ -102,7 +102,7 @@ var ping = require('ping');
 var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
 
 for(let host of hosts){
-     // WARNING: -i 2 argument may not work in other platform like window
+     // WARNING: -i 2 argument may not work in other platform like windows
     let res = await ping.promise.probe(host, {
            timeout: 10,
            extra: ['-i', '2'],
@@ -130,7 +130,7 @@ Below is the possible configuration
  * @property {boolean} v6 - Ping via ipv6 or not. Default is false
  * @property {string} sourceAddr - source address for sending the ping
  * @property {number} packetSize - Specifies the number of data bytes to be sent
-                                   Default: Linux / MAC: 56 Bytes, Window: 32 Bytes
+                                   Default: Linux / MAC: 56 Bytes, Windows: 32 Bytes
  * @property {string[]} extra - Optional options does not provided
  */
 ```
