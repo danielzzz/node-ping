@@ -22,7 +22,7 @@
   ],
   "name": "ping",
   "description": "a simple wrapper for ping",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "homepage": "http://github.com/danielzzz/node-ping",
   "license": "MIT",
   "repository": {
