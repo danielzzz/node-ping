@@ -4,21 +4,21 @@ a ping wrapper for nodejs
 
 @last-modified: 2020-12-26
 
-# LICENSE MIT
+# License MIT
 
 (C) Daniel Zelisko
 
 http://github.com/danielzzz/node-ping
 
-# DESCRIPTION
+# Description
 
 node-ping is a simple wrapper for the system ping utility
 
-# INSTALLATION
+# Installation
 
 npm install ping
 
-# USAGE
+# Usage
 
 Below are examples extracted from `examples`
 
@@ -199,3 +199,11 @@ Before opening a pull request please make sure your changes follow the
 [contribution guidelines][1].
 
 [1]: https://github.com/danielzzz/node-ping/blob/master/CONTRIBUTING.md
+
+
+# Contributors
+<a href="https://github.com/danielzzz/node-ping/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=danielzzz/node-ping" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
