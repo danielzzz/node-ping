@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         eslint: {
             src: ['lib/*.js', 'lib/**/*.js'],
             options: {
-                configFile: '.eslintrc.json',
+                overrideConfigFile: '.eslintrc.json',
             },
         },
         mochaTest: {
@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         },
     });
 
-    grunt.loadNpmTasks('gruntify-eslint');
+    grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.registerTask('test', ['eslint', 'mochaTest']);
 };
