@@ -7,7 +7,7 @@ node_js:
 
 jobs:
     include:
-        - stage: Tests
+        - stage: test
         - script: grunt test
 after_success:
     - grunt coverage
