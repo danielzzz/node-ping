@@ -1,4 +1,4 @@
-# NODE-PING [![Build Status](https://travis-ci.com/danielzzz/node-ping.svg?branch=master)](https://travis-ci.com/danielzzz/node-ping)
+# NODE-PING [![Build Status](https://app.travis-ci.com/danielzzz/node-ping.svg?branch=master)](https://app.travis-ci.com/danielzzz/node-ping)
 
 a ping wrapper for nodejs
 
@@ -83,7 +83,7 @@ hosts.forEach(function (host) {
 ```
 
 
-## Async-Await 
+## Async-Await
 ```js
 var ping = require('ping');
 
