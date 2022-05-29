@@ -4,5 +4,11 @@ node_js:
     - 16
     - 15
     - lts/*
-script:
-    - grunt test
+
+jobs:
+    include:
+        - stage: Tests
+        - script: grunt test
+after_success:
+    - grunt coverage
+    - grunt coveralls
