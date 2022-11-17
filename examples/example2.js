@@ -9,8 +9,7 @@ hosts.forEach(function (host) {
     ping.promise.probe(host)
         .then(function (res) {
             console.log(res);
-        })
-        .done();
+        });
 });
 
 // Running with custom config
@@ -22,8 +21,7 @@ hosts.forEach(function (host) {
     })
     .then(function (res) {
         console.log(res);
-    })
-    .done();
+    });
 });
 
 // Running ping with some default argument gone
@@ -36,6 +34,5 @@ hosts.forEach(function (host) {
     })
     .then(function (res) {
         console.log(res);
-    })
-    .done();
+    });
 });

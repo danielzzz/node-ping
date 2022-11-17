@@ -7,7 +7,6 @@ var expect = require('chai').expect;
 var sinon = require('sinon');
 var os = require('os');
 var cp = require('child_process');
-var q = require('q');
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
@@ -200,29 +199,27 @@ describe('ping timeout and deadline options', function () {
 
 describe('Ping in callback mode', function () {
     var pingExecution = function (fp, args) {
-        var deferred = q.defer();
+        return new Promise(function (resolve, reject) {
+            var stub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fp));
 
-        var stub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fp));
+            var cb = function (isAlive, err) {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve(isAlive);
+                }
+            };
 
-        var cb = function (isAlive, err) {
-            if (err) {
-                deferred.reject(err);
-            } else {
-                deferred.resolve(isAlive);
+            var _args = args;
+            if (fp.includes('v6')) {
+                _args = _args || {};
+                _args.v6 = true;
             }
-        };
 
-        var _args = args;
-        if (fp.includes('v6')) {
-            _args = _args || {};
-            _args.v6 = true;
-        }
+            ping.sys.probe('whatever', cb, _args);
 
-        ping.sys.probe('whatever', cb, _args);
-
-        stub.restore();
-
-        return deferred.promise.then(function (data) {
+            stub.restore();
+        }).then(function (data) {
             var answerKey = pathToAnswerKey(fp);
             var actualIsAlive = data;
             var expectIsAlive = ANSWER[answerKey].alive;
