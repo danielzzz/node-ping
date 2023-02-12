@@ -17,8 +17,7 @@ hosts.forEach(function (host) {
     .then(function (res) {
         console.log('\n');
         console.log(res);
-    })
-    .done();
+    });
 
     // Running ping with some default argument gone
     ping.sys.probe(host, function (isAlive) {
