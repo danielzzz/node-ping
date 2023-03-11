@@ -1,7 +1,9 @@
 {
   "author": "danielzzz <daniel@zelisko.net> (http://daniel.zelisko.net)",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "lint": "grunt eslint",
+    "coverage": "grunt coverage"
   },
   "contributors": [
     "Mond Wan <mondwan.1015@gmail.com>",
