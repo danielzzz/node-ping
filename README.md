@@ -1,8 +1,8 @@
-# NODE-PING [![Build Status](https://app.travis-ci.com/danielzzz/node-ping.svg?branch=master)](https://app.travis-ci.com/danielzzz/node-ping)
+# NODE-PING ![Workflow Status](https://github.com/danielzzz/node-ping/actions/workflows/build-test-coverage.yml/badge.svg)
 
 a ping wrapper for nodejs
 
-@last-modified: 2020-12-26
+@last-modified: 2023-03-11
 
 # License MIT
 
