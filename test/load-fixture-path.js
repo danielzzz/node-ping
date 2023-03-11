@@ -7,11 +7,7 @@ var glob = require('glob');
  * Check out linux platform
  */
 function isLinux(p) {
-    var platforms = [
-        'aix',
-        'android',
-        'linux',
-    ];
+    var platforms = ['aix', 'android', 'linux'];
 
     return platforms.indexOf(p) >= 0;
 }
@@ -20,10 +16,7 @@ function isLinux(p) {
  * Check out macos platform
  */
 function isMacOS(p) {
-    var platforms = [
-        'darwin',
-        'freebsd',
-    ];
+    var platforms = ['darwin', 'freebsd'];
 
     return platforms.indexOf(p) >= 0;
 }
@@ -52,10 +45,7 @@ module.exports = function (platform) {
     if (dirname) {
         targetDirectory.push(dirname);
     }
-    targetDirectory = targetDirectory.concat([
-        '**',
-        '*.txt',
-    ]);
+    targetDirectory = targetDirectory.concat(['**', '*.txt']);
     targetDirectory = path.posix.join.apply(path.posix, targetDirectory);
 
     return glob.sync(targetDirectory);

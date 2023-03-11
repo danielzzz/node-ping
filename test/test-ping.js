@@ -1,8 +1,5 @@
 'use strict';
 
-/* global describe it before after*/
-/* eslint no-unused-expressions: 0 */
-
 var expect = require('chai').expect;
 var sinon = require('sinon');
 var os = require('os');
@@ -16,7 +13,7 @@ var loadFixturePath = require('./load-fixture-path');
 var ping = require('..');
 
 // Some constants
-var ANSWER = require('./fixture/answer');
+var ANSWER = require('./fixture/answer.json');
 
 var PLATFORMS = [
     'window',
@@ -37,9 +34,7 @@ var PLATFORM_TO_EXTRA_ARGUMENTS = {
 var pathToAnswerKey = function (p) {
     var basename = path.posix.basename(p, '.txt');
     var dirname = path.posix.basename(path.posix.dirname(p));
-    var osname = path.posix.basename(
-        path.posix.dirname(path.posix.dirname(p))
-    );
+    var osname = path.posix.basename(path.posix.dirname(path.posix.dirname(p)));
 
     return [osname, dirname, basename].join('_');
 };
@@ -60,7 +55,8 @@ var mockOutSpawn = function (fp) {
             var normalizedLines = lines.map((line) => `${line}\n`);
             normalizedLines.forEach((line) => {
                 var isSystemPingErrorMessage = line.startsWith('ping: ');
-                // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                // eslint-disable-next-line max-len
+                // eslint-disable-next-line node/no-unsupported-features/node-builtins, no-buffer-constructor, node/no-deprecated-api
                 var str2Buffer = Buffer.from ? (string) => Buffer.from(string, 'utf8') : (string) => new Buffer(string);
                 var lineBuffer = str2Buffer(line);
 
@@ -87,7 +83,9 @@ var createTestCase = function (platform, pingExecution) {
 
         before(function () {
             stubs.push(
-                sinon.stub(os, 'platform').callsFake(function () { return platform; })
+                sinon.stub(os, 'platform').callsFake(function () {
+                    return platform;
+                })
             );
         });
 
@@ -99,40 +97,31 @@ var createTestCase = function (platform, pingExecution) {
 
         describe('runs with default config', function () {
             fixturePaths.forEach(function (fp) {
-                it(
-                    util.format('Using |%s|', pathToAnswerKey(fp)),
-                    function () {
-                        return pingExecution(fp);
-                    }
-                );
+                it(util.format('Using |%s|', pathToAnswerKey(fp)), function () {
+                    return pingExecution(fp);
+                });
             });
         });
 
         describe('runs with custom config', function () {
             fixturePaths.forEach(function (fp) {
-                it(
-                    util.format('Using |%s|', pathToAnswerKey(fp)),
-                    function () {
-                        return pingExecution(fp, {
-                            timeout: 10,
-                            extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
-                        });
-                    }
-                );
+                it(util.format('Using |%s|', pathToAnswerKey(fp)), function () {
+                    return pingExecution(fp, {
+                        timeout: 10,
+                        extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
+                    });
+                });
             });
         });
 
         describe('runs with custom config with default gone', function () {
             fixturePaths.forEach(function (fp) {
-                it(
-                    util.format('Using |%s|', pathToAnswerKey(fp)),
-                    function () {
-                        return pingExecution(fp, {
-                            timeout: false,
-                            extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
-                        });
-                    }
-                );
+                it(util.format('Using |%s|', pathToAnswerKey(fp)), function () {
+                    return pingExecution(fp, {
+                        timeout: false,
+                        extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
+                    });
+                });
             });
         });
     });
@@ -141,9 +130,10 @@ var createTestCase = function (platform, pingExecution) {
 describe('ping timeout and deadline options', function () {
     describe('on linux platform', function () {
         beforeEach(function () {
-            this.platformStub = sinon.stub(os, 'platform').callsFake(function () { return 'linux'; });
-            const fixturePath = path.join(__dirname, 'fixture',
-                'linux', 'en', 'sample1.txt');
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function () {
+                return 'linux';
+            });
+            const fixturePath = path.join(__dirname, 'fixture', 'linux', 'en', 'sample1.txt');
             this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
         });
 
@@ -153,23 +143,28 @@ describe('ping timeout and deadline options', function () {
         });
 
         it('are forwarded to the ping binary', function () {
-            return ping.promise.probe('whatever', {
-                timeout: 47,
-                deadline: 83,
-            }).then(function () {
-                const spawnArgs = this.spawnStub.getCalls()[0].args;
-                const pingArgs = spawnArgs[1];
-                expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47');
-                expect(pingArgs[pingArgs.indexOf('-w') + 1]).to.equal('83');
-            }.bind(this));
+            return ping.promise
+                .probe('whatever', {
+                    timeout: 47,
+                    deadline: 83,
+                })
+                .then(
+                    function () {
+                        const spawnArgs = this.spawnStub.getCalls()[0].args;
+                        const pingArgs = spawnArgs[1];
+                        expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47');
+                        expect(pingArgs[pingArgs.indexOf('-w') + 1]).to.equal('83');
+                    }.bind(this)
+                );
         });
     });
 
     describe('on windows platform', function () {
         beforeEach(function () {
-            this.platformStub = sinon.stub(os, 'platform').callsFake(function () { return 'window'; });
-            const fixturePath = path.join(__dirname, 'fixture',
-                'window', 'en', 'sample1.txt');
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function () {
+                return 'window';
+            });
+            const fixturePath = path.join(__dirname, 'fixture', 'window', 'en', 'sample1.txt');
             this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
         });
 
@@ -179,20 +174,24 @@ describe('ping timeout and deadline options', function () {
         });
 
         it('results in an error as deadline is not supported', function () {
-            return ping.promise.probe('whatever', {
-                timeout: 47,
-                deadline: 83,
-            }).then(function () {
-                throw new Error('deadline should result in an error');
-            }).catch(function () {});
+            return ping.promise
+                .probe('whatever', {
+                    timeout: 47,
+                    deadline: 83,
+                })
+                .then(function () {
+                    throw new Error('deadline should result in an error');
+                })
+                .catch(function () {});
         });
     });
 
     describe('on mac platform', function () {
         beforeEach(function () {
-            this.platformStub = sinon.stub(os, 'platform').callsFake(function () { return 'freebsd'; });
-            const fixturePath = path.join(__dirname, 'fixture',
-                'macos', 'en', 'sample1.txt');
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function () {
+                return 'freebsd';
+            });
+            const fixturePath = path.join(__dirname, 'fixture', 'macos', 'en', 'sample1.txt');
             this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
         });
 
@@ -202,15 +201,19 @@ describe('ping timeout and deadline options', function () {
         });
 
         it('are forwarded to the ping binary', function () {
-            return ping.promise.probe('whatever', {
-                timeout: 47,
-                deadline: 83,
-            }).then(function () {
-                const spawnArgs = this.spawnStub.getCalls()[0].args;
-                const pingArgs = spawnArgs[1];
-                expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47000');
-                expect(pingArgs[pingArgs.indexOf('-t') + 1]).to.equal('83');
-            }.bind(this));
+            return ping.promise
+                .probe('whatever', {
+                    timeout: 47,
+                    deadline: 83,
+                })
+                .then(
+                    function () {
+                        const spawnArgs = this.spawnStub.getCalls()[0].args;
+                        const pingArgs = spawnArgs[1];
+                        expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47000');
+                        expect(pingArgs[pingArgs.indexOf('-t') + 1]).to.equal('83');
+                    }.bind(this)
+                );
         });
     });
 });
@@ -287,7 +290,9 @@ describe('Ping ipv6 on MAC OS', function () {
 
     before(function () {
         stubs.push(
-            sinon.stub(os, 'platform').callsFake(function () { return platform; })
+            sinon.stub(os, 'platform').callsFake(function () {
+                return platform;
+            })
         );
     });
 
@@ -304,10 +309,10 @@ describe('Ping ipv6 on MAC OS', function () {
             it('Should raise an error', function (done) {
                 var stub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fp));
 
-                var ret = ping.promise.probe(
-                    'whatever',
-                    {v6: true, timeout: 10}
-                );
+                var ret = ping.promise.probe('whatever', {
+                    v6: true,
+                    timeout: 10,
+                });
 
                 stub.restore();
 

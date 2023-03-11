@@ -612,7 +612,7 @@
         "node": true,
         "browser": true,
         "amd": true,
-        "mocha": false,
+        "mocha": true,
         "jasmine": false,
         "es6": false,
         "jquery": true
