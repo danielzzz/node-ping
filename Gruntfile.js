@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 nyc: {
                     coverage: {
                         dir: 'dist/coverage',
-                        reporter: ['text', 'html', 'lcov'],
+                        reporter: ['text', 'html', 'lcov', 'cobertura'],
                     },
                 },
                 mocha: {
