@@ -58,5 +58,10 @@
     "nyc": "^15.1.0",
     "sinon": "9.2.2"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/**/*",
+    "lib/*"
+  ]
 }
