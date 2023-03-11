@@ -18,6 +18,20 @@
     "packetLoss": "0.000",
     "stddev": "0.424"
   },
+  "macos_en_sample2": {
+    "inputHost": "whatever",
+    "host": "1.1.1.1",
+    "numeric_host": "1.1.1.1",
+    "alive": false,
+    "output": "PING 1.1.1.1 (1.1.1.1): 56 data bytes\nping: permission denied (are you root?)\n",
+    "time": "unknown",
+    "times": [],
+    "min": "unknown",
+    "max": "unknown",
+    "avg": "unknown",
+    "packetLoss": "unknown",
+    "stddev": "unknown"
+  },
   "linux_en_sample1": {
     "inputHost": "whatever",
     "host": "localhost",

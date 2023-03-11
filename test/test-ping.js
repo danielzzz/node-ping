@@ -46,18 +46,36 @@ var pathToAnswerKey = function (p) {
 
 var mockOutSpawn = function (fp) {
     return function () {
-        var e = new events.EventEmitter();
-        e.stdout = e;
+        var fakeProcessEventEmitter = new events.EventEmitter();
+        var stdoutEmitter = new events.EventEmitter();
+        var stderrEmitter = new events.EventEmitter();
+
+        fakeProcessEventEmitter.stdout = stdoutEmitter;
+        fakeProcessEventEmitter.stderr = stderrEmitter;
 
         var s = fs.createReadStream(fp);
-        s.on('data', function (line) {
-            e.emit('data', line);
+        s.on('data', function (fileContentsBuffer) {
+            var fileContents = String(fileContentsBuffer);
+            var lines = fileContents.split('\n');
+            var normalizedLines = lines.map((line) => `${line}\n`);
+            normalizedLines.forEach((line) => {
+                var isSystemPingErrorMessage = line.startsWith('ping: ');
+                // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                var str2Buffer = Buffer.from ? (string) => Buffer.from(string, 'utf8') : (string) => new Buffer(string);
+                var lineBuffer = str2Buffer(line);
+
+                if (isSystemPingErrorMessage) {
+                    stderrEmitter.emit('data', lineBuffer);
+                } else {
+                    stdoutEmitter.emit('data', lineBuffer);
+                }
+            });
         });
         s.on('close', function () {
-            e.emit('close', 0);
+            fakeProcessEventEmitter.emit('close', 0);
         });
 
-        return e;
+        return fakeProcessEventEmitter;
     };
 };
 
@@ -250,6 +268,10 @@ describe('Ping in promise mode', function () {
             var answerKey = pathToAnswerKey(fp);
             var actualData = data;
             var expectData = ANSWER[answerKey];
+            var trimTraillingNewlineActualOutput = actualData.output.trim();
+            var trimTraillingNewlineExpectOutput = expectData.output.trim();
+            actualData.output = trimTraillingNewlineActualOutput;
+            expectData.output = trimTraillingNewlineExpectOutput;
             expect(actualData).to.deep.equal(expectData);
         });
     };
