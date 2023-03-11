@@ -7,7 +7,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  buildTestCoverage:
     runs-on: ubuntu-latest
 
     strategy:
