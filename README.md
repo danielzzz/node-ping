@@ -131,6 +131,13 @@ Below is the possible configuration
  * @property {string} sourceAddr - source address for sending the ping
  * @property {number} packetSize - Specifies the number of data bytes to be sent
                                    Default: Linux / MAC: 56 Bytes, Windows: 32 Bytes
+ * @property {boolean} verifyReplyAddress - Enables verification of reply addresses,
+ *                                          Default: Linux: false
+ *                                          Other platforms do not need this option.
+ * If set to true and a reply is received from an address which does not match the parsed
+ * `PingResponse.numeric_host`, the ping response is ignored.
+ * This helps against detecting a host as alive by accident when another host replies to the ping.
+ * This workaround addresses an imperfection in the ping implementation within the package iputils.
  * @property {string[]} extra - Optional options does not provided
  */
 ```

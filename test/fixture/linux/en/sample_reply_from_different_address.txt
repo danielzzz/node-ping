@@ -1,0 +1,9 @@
+PING 192.168.178.1 (192.168.178.1) 56(84) bytes of data.
+64 bytes from 192.168.178.8: icmp_seq=1 ttl=64 time=0.578 ms (DIFFERENT ADDRESS!)
+64 bytes from 192.168.178.8: icmp_seq=2 ttl=64 time=0.348 ms (DIFFERENT ADDRESS!)
+64 bytes from 192.168.178.8: icmp_seq=3 ttl=64 time=0.994 ms (DIFFERENT ADDRESS!)
+64 bytes from 192.168.178.8: icmp_seq=4 ttl=64 time=0.349 ms (DIFFERENT ADDRESS!)
+
+--- 192.168.178.1 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 0.348/0.567/0.994/0.263 ms
