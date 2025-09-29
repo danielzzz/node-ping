@@ -2,7 +2,7 @@
 
 a ping wrapper for nodejs
 
-@last-modified: 2023-03-11
+@last-modified: 2025-09-29
 
 # License MIT
 
@@ -12,11 +12,15 @@ http://github.com/danielzzz/node-ping
 
 # Description
 
-node-ping is a simple wrapper for the system ping utility
+node-ping is a simple wrapper for the system ping utility.
 
 # Installation
 
 npm install ping
+
+Notes:
+
+* Although it is marked with node >=22, it should technially working in all node version for production purpose. The version is marked for development point of view
 
 # Usage
 

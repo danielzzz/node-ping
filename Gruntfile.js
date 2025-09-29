@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         eslint: {
             src: ['lib/*.js', 'lib/**/*.js'],
             options: {
-                overrideConfigFile: '.eslintrc.json',
+                overrideConfigFile: 'eslint.config.js',
             },
         },
         mochaTest: {
