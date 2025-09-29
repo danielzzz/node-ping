@@ -1,8 +1,5 @@
 language: node_js
 node_js:
-    - 17
-    - 16
-    - 15
     - lts/*
 
 script:
