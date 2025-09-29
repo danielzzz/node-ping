@@ -1,9 +1,0 @@
-language: node_js
-node_js:
-    - lts/*
-
-script:
-    - grunt test
-after_success:
-    - grunt coverage
-    - grunt coveralls
