@@ -58,7 +58,8 @@
     "grunt-nyc-mocha": "^1.2.0",
     "mocha": "^11.7.2",
     "nyc": "^17.1.0",
-    "sinon": "21.0.0"
+    "sinon": "21.0.0",
+    "typescript": "^5.9.2"
   },
   "main": "index.js",
   "files": [
