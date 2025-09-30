@@ -60,13 +60,15 @@
     "mocha": "^11.7.2",
     "nyc": "^17.1.0",
     "sinon": "21.0.0",
+    "tsd": "^0.33.0",
     "typescript": "^5.9.2"
   },
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "files": [
-    "index.js",
     "lib/**/*",
-    "lib/*"
+    "lib/*",
+    "types/**/*",
+    "types/*"
   ]
 }
