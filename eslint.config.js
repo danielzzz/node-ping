@@ -999,7 +999,6 @@ const jsdocRules = {
 };
 
 module.exports = defineConfig([
-    mochaPlugin.configs.flat.recommended,
     {
         files: ['**/*.js'],
         languageOptions: {
@@ -1022,6 +1021,7 @@ module.exports = defineConfig([
         },
         plugins: {
             jsdoc: jsdocPlugin,
+            mochaPlugin,
         },
         rules: {
             ...styleRules,
