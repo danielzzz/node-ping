@@ -63,7 +63,7 @@ declare class Parser {
     _times: any[];
     _lines: any[];
     _stripRegex: RegExp;
-    _pingConfig: {};
+    _pingConfig: import("../index").PingConfig;
     /**
      * Change state of this parser
      * @param {number} state - parser.STATES
