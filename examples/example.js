@@ -2,7 +2,7 @@
 
 'use strict';
 
-var ping = require('../index');
+var ping = require('../lib/index');
 
 var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
 hosts.forEach(function (host) {
@@ -18,13 +18,13 @@ hosts.forEach(function (host) {
         var msg = isAlive ?
             'host ' + host + ' is alive' : 'host ' + host + ' is dead';
         console.log(msg);
-    }, {extra: ['-i', '2']});
+    }, { extra: ['-i', '2'] });
 
     // Running ping with some default argument gone
     ping.sys.probe(host, function (isAlive) {
         var msg = isAlive ?
             'host ' + host + ' is alive' : 'host ' + host + ' is dead';
         console.log(msg);
-    }, {extra: ['-i', '2'], timeout: false});
+    }, { extra: ['-i', '2'], timeout: false });
 });
 

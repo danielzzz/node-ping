@@ -61,7 +61,7 @@
     "sinon": "21.0.0",
     "typescript": "^5.9.2"
   },
-  "main": "index.js",
+  "main": "lib/index.js",
   "files": [
     "index.js",
     "lib/**/*",
