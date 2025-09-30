@@ -63,6 +63,7 @@
     "typescript": "^5.9.2"
   },
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "files": [
     "index.js",
     "lib/**/*",
