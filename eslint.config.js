@@ -2,7 +2,8 @@
 
 const babelParser = require('@babel/eslint-parser');
 const jsdocPlugin = require('eslint-plugin-jsdoc');
-const {defineConfig} = require('eslint/config');
+const mochaPlugin = require('eslint-plugin-mocha');
+const { defineConfig } = require('eslint/config');
 
 const customGlobals = {
     __dirname: 'readonly',
@@ -998,6 +999,7 @@ const jsdocRules = {
 };
 
 module.exports = defineConfig([
+    mochaPlugin.configs.flat.recommended,
     {
         files: ['**/*.js'],
         languageOptions: {
