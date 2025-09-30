@@ -55,8 +55,8 @@ var mockOutSpawn = function (fp) {
             var normalizedLines = lines.map((line) => `${line}\n`);
             normalizedLines.forEach((line) => {
                 var isSystemPingErrorMessage = line.startsWith('ping: ');
-                // eslint-disable-next-line max-len
-                // eslint-disable-next-line node/no-unsupported-features/node-builtins, no-buffer-constructor, node/no-deprecated-api
+
+                // eslint-disable-next-line node/no-unsupported-features/node-builtins, node/no-deprecated-api
                 var str2Buffer = Buffer.from ? (string) => Buffer.from(string, 'utf8') : (string) => new Buffer(string);
                 var lineBuffer = str2Buffer(line);
 
@@ -85,7 +85,7 @@ var createTestCase = function (platform, pingExecution) {
             stubs.push(
                 sinon.stub(os, 'platform').callsFake(function () {
                     return platform;
-                })
+                }),
             );
         });
 
@@ -154,7 +154,7 @@ describe('ping timeout and deadline options', function () {
                         const pingArgs = spawnArgs[1];
                         expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47');
                         expect(pingArgs[pingArgs.indexOf('-w') + 1]).to.equal('83');
-                    }.bind(this)
+                    }.bind(this),
                 );
         });
     });
@@ -182,7 +182,7 @@ describe('ping timeout and deadline options', function () {
                 .then(function () {
                     throw new Error('deadline should result in an error');
                 })
-                .catch(function () {});
+                .catch(function () { });
         });
     });
 
@@ -212,7 +212,7 @@ describe('ping timeout and deadline options', function () {
                         const pingArgs = spawnArgs[1];
                         expect(pingArgs[pingArgs.indexOf('-W') + 1]).to.equal('47000');
                         expect(pingArgs[pingArgs.indexOf('-t') + 1]).to.equal('83');
-                    }.bind(this)
+                    }.bind(this),
                 );
         });
     });
@@ -292,7 +292,7 @@ describe('Ping ipv6 on MAC OS', function () {
         stubs.push(
             sinon.stub(os, 'platform').callsFake(function () {
                 return platform;
-            })
+            }),
         );
     });
 
