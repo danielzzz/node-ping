@@ -40,6 +40,7 @@
     "@babel/eslint-parser": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
     "@biomejs/biome": "2.2.4",
+    "@types/grunt": "^0.4.32",
     "chai": "6.2.0",
     "coveralls": "^3.1.1",
     "eslint": "^9.36.0",
