@@ -1000,7 +1000,7 @@ const jsdocRules = {
 
 module.exports = defineConfig([
     {
-        files: ['**/*.js'],
+        files: ['Gruntfile.js', '**/*.js'],
         languageOptions: {
             sourceType: 'commonjs',
             parser: babelParser,

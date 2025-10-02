@@ -1,7 +1,5 @@
 'use strict';
 
-const makeDts = require('./tasks/make-dts');
-
 /**
  * Grunt configuration
  * @param {import('grunt')} grunt - The Grunt instance
@@ -9,7 +7,7 @@ const makeDts = require('./tasks/make-dts');
 module.exports = function (grunt) {
     grunt.initConfig({
         eslint: {
-            src: ['lib/*.js', 'lib/**/*.js'],
+            src: ['Gruntfile.js', 'tasks/*.js', 'lib/*.js', 'lib/**/*.js'],
             options: {
                 overrideConfigFile: 'eslint.config.js',
             },
@@ -40,6 +38,11 @@ module.exports = function (grunt) {
             options: {},
         },
         makeDts: {
+            options: {
+                config: 'tsconfig.json',
+            },
+        },
+        diffDts: {
             options: {
                 config: 'tsconfig.json',
             },
