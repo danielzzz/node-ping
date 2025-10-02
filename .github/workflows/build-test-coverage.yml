@@ -31,6 +31,10 @@ jobs:
         npm run lint
         npm run test
 
+    - name: DTS are up to date
+      run: |
+        npx run grunt diffDts
+
     - name: Covergae
       run: |
         npm run coverage
