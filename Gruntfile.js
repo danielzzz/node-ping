@@ -1,5 +1,11 @@
 'use strict';
 
+const makeDts = require('./tasks/make-dts');
+
+/**
+ * Grunt configuration
+ * @param {import('grunt')} grunt - The Grunt instance
+ */
 module.exports = function (grunt) {
     grunt.initConfig({
         eslint: {
@@ -33,12 +39,23 @@ module.exports = function (grunt) {
             src: 'dist/coverage/*.info',
             options: {},
         },
+        makeDts: {
+            options: {
+                config: 'tsconfig.json',
+                outDir: 'types',
+            },
+        },
+        runTsdTest: {
+            options: {},
+        },
     });
 
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-nyc-mocha');
     grunt.loadNpmTasks('grunt-coveralls');
-    grunt.registerTask('test', ['eslint', 'mochaTest']);
+
+    grunt.loadTasks('tasks');
+    grunt.registerTask('test', ['eslint', 'mochaTest', 'runTsdTest']);
     grunt.registerTask('coverage', ['nyc_mocha']);
 };
