@@ -1,7 +1,8 @@
 'use strict';
 
 const babelParser = require('@babel/eslint-parser');
-const jsdocPlugin = require('eslint-plugin-jsdoc');
+const jsdoc = require('eslint-plugin-jsdoc');
+const mochaPlugin = require('eslint-plugin-mocha').default;
 const {defineConfig} = require('eslint/config');
 
 const customGlobals = {
@@ -997,9 +998,15 @@ const jsdocRules = {
     'jsdoc/require-param': 0,
 };
 
+const mochaRules = {
+    'mocha/no-setup-in-describe': 'off',
+};
+
 module.exports = defineConfig([
+    jsdoc.configs['flat/recommended'],
+    mochaPlugin.configs.recommended,
     {
-        files: ['**/*.js'],
+        files: ['Gruntfile.js', '**/*.js'],
         languageOptions: {
             sourceType: 'commonjs',
             parser: babelParser,
@@ -1019,11 +1026,11 @@ module.exports = defineConfig([
             },
         },
         plugins: {
-            jsdoc: jsdocPlugin,
         },
         rules: {
             ...styleRules,
             ...jsdocRules,
+            ...mochaRules,
         },
     },
 ]);

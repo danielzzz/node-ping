@@ -1,9 +1,13 @@
 'use strict';
 
+/**
+ * Grunt configuration
+ * @param {import('grunt')} grunt - The Grunt instance
+ */
 module.exports = function (grunt) {
     grunt.initConfig({
         eslint: {
-            src: ['lib/*.js', 'lib/**/*.js'],
+            src: ['Gruntfile.js', 'tasks/*.js', 'lib/*.js', 'lib/**/*.js'],
             options: {
                 overrideConfigFile: 'eslint.config.js',
             },
@@ -33,12 +37,27 @@ module.exports = function (grunt) {
             src: 'dist/coverage/*.info',
             options: {},
         },
+        makeDts: {
+            options: {
+                config: 'tsconfig.json',
+            },
+        },
+        diffDts: {
+            options: {
+                config: 'tsconfig.json',
+            },
+        },
+        runTsdTest: {
+            options: {},
+        },
     });
 
     grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-nyc-mocha');
     grunt.loadNpmTasks('grunt-coveralls');
-    grunt.registerTask('test', ['eslint', 'mochaTest']);
+
+    grunt.loadTasks('tasks');
+    grunt.registerTask('test', ['eslint', 'mochaTest', 'runTsdTest']);
     grunt.registerTask('coverage', ['nyc_mocha']);
 };
