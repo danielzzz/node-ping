@@ -9,7 +9,7 @@
  * @param {string} platform - Name of the platform
  * @param {PingConfig} [config] - Config object in probe()
  * @return {LinuxParserClass|WinParserClass|MacParserClass} - Parser
- * @throws If given platform is not supported
+ * @throws {Error} If given platform is not supported
  */
 export function createParser(addr: string, platform: string, config?: PingConfig): LinuxParserClass | WinParserClass | MacParserClass;
 export type LinuxParser = typeof import("./linux");

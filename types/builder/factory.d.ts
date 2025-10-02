@@ -39,7 +39,7 @@ export function getExecutablePath(platform: string, v6: boolean): string;
  * Create a builder
  * @param {string} platform - Name of the platform
  * @return {LinuxBuilder|WindowsBuilder|MacBuilder} - Argument builder
- * @throws if given platform is not supported
+ * @throws {Error} if given platform is not supported
  */
 export function createBuilder(platform: string): LinuxBuilder | WindowsBuilder | MacBuilder;
 export type LinuxBuilder = typeof linuxBuilder;
