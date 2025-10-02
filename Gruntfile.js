@@ -42,7 +42,6 @@ module.exports = function (grunt) {
         makeDts: {
             options: {
                 config: 'tsconfig.json',
-                outDir: 'types',
             },
         },
         runTsdTest: {

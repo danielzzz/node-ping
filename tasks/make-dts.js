@@ -17,9 +17,6 @@ module.exports = function (grunt) {
 
         const command = 'npx';
         const args = ['-p', 'typescript', 'tsc', '--project', tsConfigFullPath];
-        const outputDirOption = this.options('makeDts').outDir;
-        const outputDirectoryPath = path.resolve(outputDirOption);
-        args.push('--outDir', outputDirectoryPath);
 
         grunt.log.writeln(`Running shell command |${command} ${args.join(' ')}|`);
         grunt.util.spawn({
