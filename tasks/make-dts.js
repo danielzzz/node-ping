@@ -4,7 +4,6 @@
 
 'use strict';
 
-const fs = require('fs');
 const path = require('path');
 
 /**
@@ -15,11 +14,6 @@ module.exports = function (grunt) {
     grunt.registerTask('makeDts', 'Generate TypeScript declaration files', function () {
         const done = this.async();
         const tsConfigFullPath = path.resolve(this.options('makeDts').config);
-        grunt.log.writeln(`Reading config from ${tsConfigFullPath}`);
-        if (!fs.existsSync(tsConfigFullPath)) {
-            grunt.log.error(`TypeScript configuration file not found: ${tsConfigFullPath}`);
-            return done(false);
-        }
 
         const command = 'npx';
         const args = ['-p', 'typescript', 'tsc', '--project', tsConfigFullPath];
