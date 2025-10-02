@@ -6,7 +6,6 @@ var os = require('os');
 var cp = require('child_process');
 var fs = require('fs');
 var path = require('path');
-var util = require('util');
 var events = require('events');
 
 var loadFixturePath = require('./load-fixture-path');
@@ -56,7 +55,6 @@ var mockOutSpawn = function (fp) {
             normalizedLines.forEach((line) => {
                 var isSystemPingErrorMessage = line.startsWith('ping: ');
 
-                // eslint-disable-next-line node/no-unsupported-features/node-builtins, node/no-deprecated-api
                 var str2Buffer = Buffer.from ? (string) => Buffer.from(string, 'utf8') : (string) => new Buffer(string);
                 var lineBuffer = str2Buffer(line);
 
@@ -77,10 +75,9 @@ var mockOutSpawn = function (fp) {
 
 var createTestCase = function (platform, pingExecution) {
     var stubs = [];
+    var fixturePaths = loadFixturePath(platform);
 
-    describe(util.format('On %s platform', platform), function () {
-        var fixturePaths = loadFixturePath(platform);
-
+    describe(`On ${platform} platform`, function () {
         before(function () {
             stubs.push(
                 sinon.stub(os, 'platform').callsFake(function () {
@@ -97,7 +94,7 @@ var createTestCase = function (platform, pingExecution) {
 
         describe('runs with default config', function () {
             fixturePaths.forEach(function (fp) {
-                it(util.format('Using |%s|', pathToAnswerKey(fp)), function () {
+                it(`Using |${pathToAnswerKey(fp)}|`, function () {
                     return pingExecution(fp);
                 });
             });
@@ -105,7 +102,7 @@ var createTestCase = function (platform, pingExecution) {
 
         describe('runs with custom config', function () {
             fixturePaths.forEach(function (fp) {
-                it(util.format('Using |%s|', pathToAnswerKey(fp)), function () {
+                it(`Using |${pathToAnswerKey(fp)}|`, function () {
                     return pingExecution(fp, {
                         timeout: 10,
                         extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
@@ -116,7 +113,7 @@ var createTestCase = function (platform, pingExecution) {
 
         describe('runs with custom config with default gone', function () {
             fixturePaths.forEach(function (fp) {
-                it(util.format('Using |%s|', pathToAnswerKey(fp)), function () {
+                it(`Using |${pathToAnswerKey(fp)}|`, function () {
                     return pingExecution(fp, {
                         timeout: false,
                         extra: PLATFORM_TO_EXTRA_ARGUMENTS[platform],
@@ -287,6 +284,7 @@ describe('Ping in promise mode', function () {
 describe('Ping ipv6 on MAC OS', function () {
     var platform = 'darwin';
     var stubs = [];
+    var fixturePaths = loadFixturePath(platform);
 
     before(function () {
         stubs.push(
@@ -303,8 +301,6 @@ describe('Ping ipv6 on MAC OS', function () {
     });
 
     describe('With timeout setting', function () {
-        var fixturePaths = loadFixturePath(platform);
-
         fixturePaths.forEach(function (fp) {
             it('Should raise an error', function (done) {
                 var stub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fp));
