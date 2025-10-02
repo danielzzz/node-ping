@@ -5,9 +5,9 @@
 'use strict';
 
 const path = require('path');
-const { mkdtempSync, rmSync } = require('fs');
-const { sep } = require('path');
-const { tmpdir } = require('os');
+const {mkdtempSync, rmSync} = require('fs');
+const {sep} = require('path');
+const {tmpdir} = require('os');
 
 /**
  * Grunt configuration
@@ -81,7 +81,7 @@ module.exports = function (grunt) {
 
         runTscPromise()
             .then(runDiffPromise)
-            .then(() => rmSync(tempDirectoryFullPath, { recursive: true }))
+            .then(() => rmSync(tempDirectoryFullPath, {recursive: true}))
             .then(() => done(true))
             .catch((err) => {
                 grunt.log.error(`Error during running the shell command: ${err.message}`);
