@@ -33,7 +33,7 @@ jobs:
 
     - name: DTS are up to date
       run: |
-        npx run grunt diffDts
+        npx grunt diffDts
 
     - name: Covergae
       run: |
