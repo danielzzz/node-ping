@@ -1,14 +1,14 @@
 /**
  * Callback after probing given host
  */
-export type probeCallback = (isAlive: boolean, error: Error | null) => any;
+export type probeCallback = (response: import("./parser/base").PingResponse, error: Error | null) => any;
 /**
  * @module ping/ping-sys
  */
 /**
  * Callback after probing given host
  * @callback probeCallback
- * @param {boolean} isAlive - Whether target is alive or not
+ * @param {import('./parser/base').PingResponse} response - Ping response object
  * @param {Error|null} error - Error object if error occurs, null otherwise
  */
 /**
