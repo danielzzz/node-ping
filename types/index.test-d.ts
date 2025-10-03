@@ -13,8 +13,8 @@ const pingConfig: PingConfig = {
 };
 
 expectType<Promise<PingResponse>>(promiseProbe('localhost', pingConfig));
-expectType<Promise<any>>(callbackProbe('localhost', (isAlive, error) => {
-    expectType<boolean>(isAlive);
+expectType<Promise<PingResponse>>(callbackProbe('localhost', (response, error) => {
+    expectType<PingResponse>(response);
     expectType<Error | null>(error);
 }, pingConfig));
 
