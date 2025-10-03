@@ -123,6 +123,20 @@
     "packetLoss": "0.000",
     "stddev": "0.000"
   },
+  "linux_en_sample5": {
+    "inputHost": "whatever",
+    "host": "1.1.1.1",
+    "alive": false,
+    "output": "PING 1.1.1.1 (1.1.1.1): 56 data bytes\nping: permission denied (are you root?)\n",
+    "time": "unknown",
+    "times": [],
+    "min": "unknown",
+    "max": "unknown",
+    "avg": "unknown",
+    "stddev": "unknown",
+    "packetLoss": "unknown",
+    "numeric_host": "1.1.1.1"
+  },
   "linux_en_v6_sample1": {
     "inputHost": "whatever",
     "host": "2606:4700:4700::1111",
