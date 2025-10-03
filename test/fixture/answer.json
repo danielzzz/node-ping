@@ -32,6 +32,22 @@
     "packetLoss": "unknown",
     "stddev": "unknown"
   },
+  "macos_en_sample3": {
+    "inputHost": "whatever",
+    "host": "www.taobao.com.danuoyi.tbcache.com",
+    "numeric_host": "122.225.217.183",
+    "alive": true,
+    "output": "PING www.taobao.com.danuoyi.tbcache.com (122.225.217.183): 56 data bytes\n64 bytes from 122.225.217.183: icmp_seq=0 ttl=53 kj=4.628 ms\n\n--- www.taobao.com.danuoyi.tbcache.com ping statistics ---\n1 packets transmitted, 1 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 4.628/4.628/4.628/nan ms\n",
+    "time": 4.628,
+    "times": [
+      4.628
+    ],
+    "min": "4.628",
+    "max": "4.628",
+    "avg": "4.628",
+    "stddev": "0.000",
+    "packetLoss": "0.000"
+  },
   "linux_en_sample1": {
     "inputHost": "whatever",
     "host": "localhost",
