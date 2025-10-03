@@ -239,9 +239,13 @@ describe('Ping in callback mode', function () {
             stub.restore();
         }).then(function (data) {
             var answerKey = pathToAnswerKey(fp);
-            var actualIsAlive = data;
-            var expectIsAlive = ANSWER[answerKey].alive;
-            expect(actualIsAlive).to.equal(expectIsAlive);
+            var actualData = data;
+            var expectData = ANSWER[answerKey];
+            var trimTraillingNewlineActualOutput = actualData.output.trim();
+            var trimTraillingNewlineExpectOutput = expectData.output.trim();
+            actualData.output = trimTraillingNewlineActualOutput;
+            expectData.output = trimTraillingNewlineExpectOutput;
+            expect(actualData).to.deep.equal(expectData);
         });
     };
 
