@@ -16,7 +16,7 @@ export type probeCallback = (isAlive: boolean, error: Error | null) => any;
  * @param {string} addr - Hostname or ip address
  * @param {probeCallback} cb - Callback
  * @param {import('./index').PingConfig} [config] - Configuration for command ping
- * @return {Promise} Promise from the underlying ping operation
+ * @return {Promise<import('./parser/base').PingResponse>} Promise from the underlying ping operation
  */
-export function probe(addr: string, cb: probeCallback, config?: import("./index").PingConfig): Promise<any>;
+export function probe(addr: string, cb: probeCallback, config?: import("./index").PingConfig): Promise<import("./parser/base").PingResponse>;
 //# sourceMappingURL=ping-sys.d.ts.map
