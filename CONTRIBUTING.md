@@ -3,6 +3,18 @@
 We welcome patches and features. There are however a few things that are
 required before your pull request can be merged.
 
+# Development
+
+## About TypeScript Support
+
+Currently, this is still a common js module or library. We provide typescript definitions only.
+
+Please make sure to run following for updating the typescript definition files accordingly.
+
+```shell
+npx grunt makeDts
+```
+
 # Tests
 
 ## How to write a new test case

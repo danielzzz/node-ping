@@ -1,0 +1,6 @@
+PING www.taobao.com.danuoyi.tbcache.com (122.225.217.183): 56 data bytes
+64 bytes from 122.225.217.183: icmp_seq=0 ttl=53 kj=4.628 ms
+
+--- www.taobao.com.danuoyi.tbcache.com ping statistics ---
+1 packets transmitted, 1 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 4.628/4.628/4.628/nan ms

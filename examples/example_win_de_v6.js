@@ -2,7 +2,7 @@
 
 'use strict';
 
-var ping = require('../index');
+var ping = require('../lib/index');
 
 var hosts = ['google.de']; // , '192.168.1.1', 'google.com', 'yahoo.com'];
 
@@ -14,10 +14,10 @@ hosts.forEach(function (host) {
         sourceAddr: 'your NIC\'s IPv6 address',
         // sourceAddr: false,
     })
-    .then(function (res) {
-        console.log('\n');
-        console.log(res);
-    });
+        .then(function (res) {
+            console.log('\n');
+            console.log(res);
+        });
 
     // Running ping with some default argument gone
     ping.sys.probe(host, function (isAlive) {

@@ -2,7 +2,7 @@
 
 a ping wrapper for nodejs
 
-@last-modified: 2023-03-11
+@last-modified: 2025-09-29
 
 # License MIT
 
@@ -12,11 +12,15 @@ http://github.com/danielzzz/node-ping
 
 # Description
 
-node-ping is a simple wrapper for the system ping utility
+node-ping is a simple wrapper for the system ping utility.
 
 # Installation
 
 npm install ping
+
+Notes:
+
+* Although it is marked with node >=22, it should technially working in all node version for production purpose. The version is marked for development point of view
 
 # Usage
 
@@ -84,6 +88,7 @@ hosts.forEach(function (host) {
 
 
 ## Async-Await
+
 ```js
 var ping = require('ping');
 
@@ -96,6 +101,7 @@ for(let host of hosts){
 ```
 
 ## Async-Await with configurable ping options
+
 ```js
 var ping = require('ping');
 
@@ -112,69 +118,17 @@ for(let host of hosts){
 ```
 ### Support configuration
 
-Below is the possible configuration
-
-```js
-/**
- * Cross platform config representation
- * @typedef {Object} PingConfig
- * @property {boolean} numeric - Map IP address to hostname or not
- * @property {number} timeout - Timeout in seconds for each ping request.
- * Behaviour varies between platforms. Check platform ping documentation for more information.
- * @property {number} deadline - Specify a timeout, in seconds, before ping exits regardless of
-              how many packets have been sent or received. In this case ping
-              does not stop after count packet are sent, it waits either for
-              deadline expire or until count probes are answered or for some
-              error notification from network. This option is only available on linux and mac.
- * @property {number} min_reply - Exit after sending number of ECHO_REQUEST
- * @property {boolean} v6 - Ping via ipv6 or not. Default is false
- * @property {string} sourceAddr - source address for sending the ping
- * @property {number} packetSize - Specifies the number of data bytes to be sent
-                                   Default: Linux / MAC: 56 Bytes, Windows: 32 Bytes
- * @property {boolean} verifyReplyAddress - Enables verification of reply addresses,
- *                                          Default: Linux: false
- *                                          Other platforms do not need this option.
- * If set to true and a reply is received from an address which does not match the parsed
- * `PingResponse.numeric_host`, the ping response is ignored.
- * This helps against detecting a host as alive by accident when another host replies to the ping.
- * This workaround addresses an imperfection in the ping implementation within the package iputils.
- * @property {string[]} extra - Optional options does not provided
- */
-```
+See `PingConfig` in `types/index.d.ts`
 
 ### Output specification
 
 * For callback based implementation:
 
-```js
-/**
- * Callback after probing given host
- * @callback probeCallback
- * @param {boolean} isAlive - Whether target is alive or not
- * @param {Object} error - Null if no error occurs
- */
-```
+See `probeCallback` in `types/ping-sys.d.ts`
 
 * For promise based implementation
 
-```js
-/**
- * Parsed response
- * @typedef {object} PingResponse
- * @param {string} inputHost - The input IP address or HOST
- * @param {string} host - Parsed host from system command's output
- * @param {string} numeric_host - Target IP address
- * @param {boolean} alive - True for existed host
- * @param {string} output - Raw stdout from system ping
- * @param {number} time - Time (float) in ms for first successful ping response
- * @param {Array} times - Array of Time (float) in ms for each ping response
- * @param {string} min - Minimum time for collection records
- * @param {string} max - Maximum time for collection records
- * @param {string} avg - Average time for collection records
- * @param {string} packetLoss - Packet Losses in percent (100% -> "100.000")
- * @param {string} stddev - Standard deviation time for collected records
- */
-```
+See `PingResponse` in `types/ping-promise.d.ts`
 
 #### Note
 

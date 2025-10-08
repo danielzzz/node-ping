@@ -1,6 +1,6 @@
 'use strict';
 
-var ping = require('../index');
+var ping = require('../lib/index');
 
 var hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
 
@@ -19,9 +19,9 @@ hosts.forEach(function (host) {
         timeout: 10,
         extra: ['-i', '2'],
     })
-    .then(function (res) {
-        console.log(res);
-    });
+        .then(function (res) {
+            console.log(res);
+        });
 });
 
 // Running ping with some default argument gone
@@ -32,7 +32,7 @@ hosts.forEach(function (host) {
         // Below extra arguments may not work in platforms other than linux
         extra: ['-i', '2'],
     })
-    .then(function (res) {
-        console.log(res);
-    });
+        .then(function (res) {
+            console.log(res);
+        });
 });
