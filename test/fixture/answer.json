@@ -125,6 +125,7 @@
     "avg": "0.567",
     "stddev": "0.263",
     "packetLoss": "0.000"
+  },
   "linux_en_sample4": {
     "inputHost": "whatever",
     "host": "google.com",

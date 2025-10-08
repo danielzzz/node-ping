@@ -139,18 +139,18 @@ describe('ping reply from a different address', function () {
             this.spawnStub.restore();
         });
 
-        it('host is not considered alive if verifyReplyAddress is true', async function() {
+        it('host is not considered alive if ignoreDifferentAddressReply is true', async function() {
             const res = await ping.promise
                 .probe('whatever', {
-                    verifyReplyAddress: true,
+                    ignoreDifferentAddressReply: true,
                 });
             expect(res.alive).to.be.false;
         });
 
-        it('host is considered alive if verifyReplyAddress is false', async function() {
+        it('host is considered alive if ignoreDifferentAddressReply is false', async function() {
             const res = await ping.promise
                 .probe('whatever', {
-                    verifyReplyAddress: false,
+                    ignoreDifferentAddressReply: false,
                 });
             expect(res.alive).to.be.true;
         });
