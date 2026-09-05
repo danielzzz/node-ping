@@ -6,6 +6,13 @@ on:
   pull_request:
     branches: [ "master" ]
 
+# Dependabot PRs get a read-only GITHUB_TOKEN unless permissions are set
+# explicitly. Without pull-requests: write, the coverage comment step fails
+# the whole job.
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   buildTestCoverage:
     runs-on: ubuntu-latest
@@ -55,6 +62,7 @@ jobs:
     - name: Add Coverage PR Comment
       uses: marocchino/sticky-pull-request-comment@v2
       if: github.event_name == 'pull_request'
+      continue-on-error: true
       with:
         recreate: true
         path: code-coverage-results.md
