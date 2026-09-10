@@ -1,9 +1,9 @@
 {
   "author": "danielzzz <daniel@zelisko.net> (http://daniel.zelisko.net)",
   "scripts": {
-    "test": "grunt test",
+    "test": "grunt eslint && mocha 'test/test-*.js' --reporter dot && grunt runTsdTest",
     "lint": "grunt eslint",
-    "coverage": "grunt coverage"
+    "coverage": "nyc --reporter=text --reporter=html --reporter=lcov --reporter=cobertura --report-dir=dist/coverage mocha 'test/test-*.js' --reporter dot"
   },
   "contributors": [
     "Mond Wan <mondwan.1015@gmail.com>",
@@ -56,9 +56,7 @@
     "grunt": "^1.6.1",
     "grunt-coveralls": "^2.0.0",
     "grunt-eslint": "^26.0.0",
-    "grunt-mocha-test": "^0.13.3",
-    "grunt-nyc-mocha": "^1.2.0",
-    "mocha": "^11.7.2",
+    "mocha": "^12.0.0",
     "nyc": "^17.1.0",
     "sinon": "21.0.0",
     "tsd": "^0.33.0",
