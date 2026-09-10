@@ -162,9 +162,29 @@ describe('ping reply from a different address', function () {
                 });
             expect(res.alive).to.be.false;
             expect(res.packetLoss).to.equal('100.000');
+            expect(res.time).to.equal('unknown');
+            expect(res.times).to.deep.equal([]);
             expect(res.min).to.equal('unknown');
             expect(res.avg).to.equal('unknown');
             expect(res.max).to.equal('unknown');
+            expect(res.stddev).to.equal('unknown');
+        });
+
+        ['sample1', 'sample2', 'v6_sample1', 'v6_sample2'].forEach(function (fixtureName) {
+            it(`keeps replies and stats from the target address using ${fixtureName}`, async function () {
+                const fixturePath = path.join(__dirname, 'fixture', 'linux', 'en', `${fixtureName}.txt`);
+                this.spawnStub.callsFake(mockOutSpawn(fixturePath));
+
+                const res = await ping.promise.probe('whatever', {
+                    ignoreDifferentAddressReply: true,
+                    v6: fixtureName.startsWith('v6'),
+                });
+                const expected = ANSWER[`linux_en_${fixtureName}`];
+                expect({...res, output: res.output.trim()}).to.deep.equal({
+                    ...expected,
+                    output: expected.output.trim(),
+                });
+            });
         });
     });
 
