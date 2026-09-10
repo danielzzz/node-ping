@@ -124,6 +124,102 @@ var createTestCase = function (platform, pingExecution) {
     });
 };
 
+describe('ping reply from a different address', function () {
+    describe('on linux platform', function() {
+        beforeEach(function() {
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function() {
+                return 'linux';
+            });
+            const fixturePath = path.join(__dirname, 'fixture', 'linux', 'en', 'sample_reply_from_different_address.txt');
+            this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
+        });
+
+        afterEach(function() {
+            this.platformStub.restore();
+            this.spawnStub.restore();
+        });
+
+        it('host is not considered alive if ignoreDifferentAddressReply is true', async function() {
+            const res = await ping.promise
+                .probe('whatever', {
+                    ignoreDifferentAddressReply: true,
+                });
+            expect(res.alive).to.be.false;
+        });
+
+        it('host is considered alive if ignoreDifferentAddressReply is false', async function() {
+            const res = await ping.promise
+                .probe('whatever', {
+                    ignoreDifferentAddressReply: false,
+                });
+            expect(res.alive).to.be.true;
+        });
+
+        it('does not keep footer stats when every reply address is ignored', async function() {
+            const res = await ping.promise
+                .probe('whatever', {
+                    ignoreDifferentAddressReply: true,
+                });
+            expect(res.alive).to.be.false;
+            expect(res.packetLoss).to.equal('100.000');
+            expect(res.time).to.equal('unknown');
+            expect(res.times).to.deep.equal([]);
+            expect(res.min).to.equal('unknown');
+            expect(res.avg).to.equal('unknown');
+            expect(res.max).to.equal('unknown');
+            expect(res.stddev).to.equal('unknown');
+        });
+
+        ['sample1', 'sample2', 'v6_sample1', 'v6_sample2'].forEach(function (fixtureName) {
+            it(`keeps replies and stats from the target address using ${fixtureName}`, async function () {
+                const fixturePath = path.join(__dirname, 'fixture', 'linux', 'en', `${fixtureName}.txt`);
+                this.spawnStub.callsFake(mockOutSpawn(fixturePath));
+
+                const res = await ping.promise.probe('whatever', {
+                    ignoreDifferentAddressReply: true,
+                    v6: fixtureName.startsWith('v6'),
+                });
+                const expected = ANSWER[`linux_en_${fixtureName}`];
+                expect({...res, output: res.output.trim()}).to.deep.equal({
+                    ...expected,
+                    output: expected.output.trim(),
+                });
+            });
+        });
+    });
+
+    describe('on linux platform when the reply IP only contains the target as a substring', function() {
+        afterEach(function() {
+            this.platformStub.restore();
+            this.spawnStub.restore();
+        });
+
+        var stubFixture = function (fixtureName) {
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function() {
+                return 'linux';
+            });
+            const fixturePath = path.join(__dirname, 'fixture', 'ignore-address', fixtureName);
+            this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
+        };
+
+        it('does not treat 18.8.8.8 as a reply for 8.8.8.8', async function() {
+            stubFixture.call(this, 'reply_from_18.8.8.8.txt');
+            const res = await ping.promise.probe('8.8.8.8', {
+                ignoreDifferentAddressReply: true,
+            });
+            expect(res.alive).to.be.false;
+        });
+
+        it('does not treat 8.8.8.80 as a reply for 8.8.8.8', async function() {
+            stubFixture.call(this, 'reply_from_8.8.8.80.txt');
+            const res = await ping.promise.probe('8.8.8.8', {
+                ignoreDifferentAddressReply: true,
+            });
+            expect(res.alive).to.be.false;
+        });
+    });
+});
+
 describe('ping timeout and deadline options', function () {
     describe('on linux platform', function () {
         beforeEach(function () {

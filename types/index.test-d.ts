@@ -10,6 +10,7 @@ import { PingConfig } from ".";
 const pingConfig: PingConfig = {
     numeric: true,
     timeout: 10,
+    ignoreDifferentAddressReply: true,
 };
 
 expectType<Promise<PingResponse>>(promiseProbe('localhost', pingConfig));
