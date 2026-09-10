@@ -154,6 +154,49 @@ describe('ping reply from a different address', function () {
                 });
             expect(res.alive).to.be.true;
         });
+
+        it('does not keep footer stats when every reply address is ignored', async function() {
+            const res = await ping.promise
+                .probe('whatever', {
+                    ignoreDifferentAddressReply: true,
+                });
+            expect(res.alive).to.be.false;
+            expect(res.packetLoss).to.equal('100.000');
+            expect(res.min).to.equal('unknown');
+            expect(res.avg).to.equal('unknown');
+            expect(res.max).to.equal('unknown');
+        });
+    });
+
+    describe('on linux platform when the reply IP only contains the target as a substring', function() {
+        afterEach(function() {
+            this.platformStub.restore();
+            this.spawnStub.restore();
+        });
+
+        var stubFixture = function (fixtureName) {
+            this.platformStub = sinon.stub(os, 'platform').callsFake(function() {
+                return 'linux';
+            });
+            const fixturePath = path.join(__dirname, 'fixture', 'ignore-address', fixtureName);
+            this.spawnStub = sinon.stub(cp, 'spawn').callsFake(mockOutSpawn(fixturePath));
+        };
+
+        it('does not treat 18.8.8.8 as a reply for 8.8.8.8', async function() {
+            stubFixture.call(this, 'reply_from_18.8.8.8.txt');
+            const res = await ping.promise.probe('8.8.8.8', {
+                ignoreDifferentAddressReply: true,
+            });
+            expect(res.alive).to.be.false;
+        });
+
+        it('does not treat 8.8.8.80 as a reply for 8.8.8.8', async function() {
+            stubFixture.call(this, 'reply_from_8.8.8.80.txt');
+            const res = await ping.promise.probe('8.8.8.8', {
+                ignoreDifferentAddressReply: true,
+            });
+            expect(res.alive).to.be.false;
+        });
     });
 });
 
